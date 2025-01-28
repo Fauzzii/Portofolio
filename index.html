@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fauzi Eka Putra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overscroll-behavior: none;
+        }
+
+        html,
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 10vw;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 8vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+            transition: top 0.3s ease-in-out;
+        }
+
+        .nav.hide {
+            top: -100px;
+        }
+
+        .nav.scrolled a {
+            color: #fff;
+        }
+
+        .nav.scrolled .sub-item {
+            color: #737272;
+        }
+
+        .nav a {
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item {
+            margin: 0 6vw;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .sub-item {
+            display: block;
+            font-size: 1rem;
+            margin-top: 5px;
+            color: #737272;
+        }
+
+        .nav-right {
+            display: flex;
+        }
+
+        .header {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .letters {
+            flex: 1;
+            display: flex;
+            text-transform: uppercase;
+            font-family: arial;
+        }
+
+        .letters>div {
+            flex: 1;
+            font-size: 18vw;
+            font-weight: 400;
+            color: #000;
+            text-align: center;
+        }
+
+        .website-content {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .img-holder {
+            position: relative;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background: #eaeaea;
+            clip-path: polygon(37.5% 20%, 62.5% 20%, 62.5% 80%, 37.5% 80%);
+            transform: rotate(30deg);
+        }
+
+        .img-holder img {
+            position: relative;
+            transform: scale(2);
+        }
+
+        .content-holder {
+            position: relative;
+            top: -5px;
+            width: 100%;
+            background: #000;
+            color: #eaeaea;
+            padding: 1em;
+            overflow-x: hidden;
+        }
+
+        .row {
+            margin: 2em 0;
+            padding: 0 1em;
+        }
+
+        .img {
+            width: 100%;
+            height: 275px;
+            overflow: hidden;
+        }
+
+        .row:nth-child(2) .img,
+        .row:nth-child(3) .img,
+        .row:nth-child(4) .img {
+            position: relative;
+            left: 0;
+        }
+
+        .row:nth-child(6) p {
+            position: relative;
+            left: 0;
+            margin: 4em auto;
+        }
+
+        #reveal-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5vw;
+            font-weight: bold;
+            color: #fff;
+            z-index: 10001;
+            opacity: 0;
+        }
+
+        #reveal-top,
+        #reveal-bottom {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            background-color: #000;
+            z-index: 10000;
+        }
+
+        #reveal-top {
+            top: 0;
+        }
+
+        #reveal-bottom {
+            bottom: 0;
+        }
+
+        .header-row {
+            width: 100%;
+            height: 100px;
+        }
+
+        .header-row:nth-child(1) {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .header-row:nth-child(2) {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30vh;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            /* Pusatkan secara horizontal */
+            align-items: center;
+            /* Pusatkan secara vertikal */
+            z-index: 1000;
+            font-size: 24px;
+            border-radius: 40px;
+            color: #000;
+            box-sizing: border-box;
+            transform: translateY(300vh);
+        }
+
+        .sticky-footer p {
+            font-size: 100px;
+            font-weight: bolder;
+            white-space: nowrap;
+            margin: 0;
+            /* Hapus margin-left */
+        }
+
+        .nav-item.dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-right a.nav-item {
+                display: none;
+            }
+
+            .dropdown {
+                display: block;
+            }
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown-content a {
+            color: #000;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav-item.dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-right a.nav-item {
+                display: none;
+            }
+
+            .dropdown {
+                display: block;
+            }
+        }
+
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .nav-left,
+            .nav-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .header {
+                flex-direction: column;
+            }
+
+            .letters>div {
+                font-size: 12vw;
+            }
+
+            .img-holder {
+                clip-path: polygon(20% 20%, 80% 20%, 80% 80%, 20% 80%);
+            }
+
+            h1 {
+                font-size: 8vw;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .sticky-footer p {
+                font-size: 8vw;
+                /* Ukuran font yang lebih kecil untuk layar kecil */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sticky-footer p {
+                font-size: 6vw;
+                /* Ukuran font yang lebih kecil untuk layar sangat kecil */
+            }
+        }
+
+        @media (min-width: 769px) {
+            h1 {
+                font-size: 80px;
+            }
+
+            p {
+                font-size: 18px;
+                width: 50%;
+            }
+
+            .img {
+                width: 100%;
+            }
+
+            .row:nth-child(2) .img {
+                left: 25%;
+            }
+
+            .row:nth-child(3) .img {
+                left: 0;
+            }
+
+            .row:nth-child(4) .img {
+                left: 35%;
+            }
+
+            .row:nth-child(6) p {
+                left: 25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="reveal-top"></div>
+    <div id="reveal-bottom"></div>
+    <div id="reveal-text">Fauzi Eka Putra</div>
+
+    <div class="nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">© Code by Fauzi</a>
+            <a href="main.html" class="nav-item">
+                WORK
+                <div class="sub-item">(PROJECTS)</div>
+            </a>
+            <div class="nav-item dropdown">
+                <a>CONTACT</a>
+                <div class="dropdown-content">
+                    <a href="https://www.linkedin.com/in/fauzi-eka-putra-086319286 " target="_blank"
+                        style="color: #000;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/Fauzzii" target="_blank" style="color: #000;"><i
+                            class="fab fa-github"></i> GitHub</a>
+                    <a href="https://wa.me/62895321527164" target="_blank" style="color: #000;"><i
+                            class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="mailto:fauziekaputra704@gmail.com" class="nav-item">GET IN TOUCH <i
+                    class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="letters">
+            <div>D</div>
+            <div>I</div>
+            <div>V</div>
+            <div>E</div>
+        </div>
+        <div class="letters">
+            <div>D</div>
+            <div>O</div>
+            <div>W</div>
+            <div>N</div>
+        </div>
+    </div>
+
+    <div class="website-content">
+        <div class="img-holder">
+            <img src="assets/computer-keyboard-cup-tea-wooden-table-night.jpg" alt="Office">
+        </div>
+
+        <div class="content-holder">
+            <div class="row">
+                <section class="info">
+                    <div class="header-rows">
+                        <div class="header-row">
+                            <h1 id="fullstack-text">FullStack</h1>
+                        </div>
+                        <div class="header-row">
+                            <h1 id="developer-text">Developer</h1>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="row">
+                <p id="about-text-1">I am a passionate Full Stack Developer with expertise in both front-end and
+                    back-end technologies. I specialize in creating responsive, user-friendly web applications that
+                    deliver seamless experiences across all devices. With a strong foundation in JavaScript, Laravel,
+                    PHP, and various databases, I bring ideas to life with clean, efficient, and scalable code.</p>
+            </div>
+
+            <div class="row">
+                <p id="about-text-2">Whether it's building robust APIs, designing intuitive user interfaces, or
+                    optimizing performance, I am committed to delivering high-quality solutions that meet the needs of
+                    users and businesses alike.</p>
+            </div>
+
+            <div class="row">
+                <div class="img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sticky-footer">
+        <p>Dream it. Build it. Own it.</p>
+        <p></p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        function updateLayout() {
+            const contentHolderHeight = document.querySelector(".content-holder").offsetHeight;
+            const imgHolderHeight = window.innerHeight;
+            const additionalScrollHeight = window.innerHeight;
+
+            const totalBodyHeight = contentHolderHeight + imgHolderHeight + additionalScrollHeight;
+            document.body.style.height = `${totalBodyHeight}px`;
+        }
+
+        document.addEventListener("DOMContentLoaded", updateLayout);
+        window.addEventListener("resize", updateLayout);
+
+        gsap.set("#reveal-text", { opacity: 0 });
+        gsap.set(".website-content", { opacity: 0 });
+
+        gsap.to("#reveal-text", {
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            delay: 0.5,
+            onComplete: () => {
+                gsap.to("#reveal-text", {
+                    opacity: 0,
+                    duration: 1,
+                    delay: 0.8,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        gsap.to("#reveal-top", { y: "-100%", duration: 1, ease: "power2.inOut" });
+                        gsap.to("#reveal-bottom", { y: "100%", duration: 1, ease: "power2.inOut" });
+                        gsap.to(".website-content", { opacity: 1, duration: 1, delay: 0.5 });
+                    }
+                });
+            }
+        });
+
+        let lastScroll = 0;
+        const nav = document.querySelector(".nav");
+
+        window.addEventListener("scroll", () => {
+            const currentScroll = window.scrollY;
+
+            if (currentScroll > lastScroll) {
+                nav.classList.add("hide");
+            } else {
+                nav.classList.remove("hide");
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        const halfPageHeight = document.body.scrollHeight / 2;
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY >= halfPageHeight) {
+                nav.classList.add("scrolled");
+            } else {
+                nav.classList.remove("scrolled");
+            }
+        });
+
+        ScrollTrigger.create({
+            trigger: ".website-content",
+            start: "-0.1% top",
+            end: "bottom bottom",
+            onEnter: () => {
+                gsap.set(".website-content", { position: 'absolute', top: '195%' });
+            },
+            onLeaveBack: () => {
+                gsap.set(".website-content", { position: 'fixed', top: '0' });
+            }
+        });
+
+        gsap.to(".header .letters:first-child", {
+            x: () => -innerWidth * 3,
+            scale: 10,
+            ease: "power2.inOut",
+            scrollTrigger: {
+                start: "top top",
+                end: `+=200%`,
+                scrub: 5
+            }
+        });
+
+        gsap.to(".header .letters:last-child", {
+            x: () => innerWidth * 3,
+            scale: 10,
+            ease: "power2.inOut",
+            scrollTrigger: {
+                start: "top top",
+                end: `+=200%`,
+                scrub: 5
+            }
+        });
+
+        gsap.to(".img-holder", {
+            rotation: 0,
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+            ease: "power2.inOut",
+            scrollTrigger: {
+                start: "top top",
+                end: `+=200%`,
+                scrub: 5
+            }
+        });
+
+        gsap.to(".img-holder img", {
+            scale: 1,
+            ease: "power2.inOut",
+            scrollTrigger: {
+                start: "top top",
+                end: `+=200%`,
+                scrub: 5
+            }
+        });
+
+        gsap.from("#about-text-1", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            scrollTrigger: {
+                trigger: "#about-text-1",
+                start: "top 80%",
+                end: "top 50%",
+                scrub: 1
+            }
+        });
+
+        gsap.from("#about-text-2", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            scrollTrigger: {
+                trigger: "#about-text-2",
+                start: "top 80%",
+                end: "top 50%",
+                scrub: 1
+            }
+        });
+
+        gsap.from("#fullstack-text", {
+            x: -100,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".header-rows",
+                start: "top 80%",
+                end: "top 50%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        gsap.from("#developer-text", {
+            x: 100,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".header-rows",
+                start: "top 80%",
+                end: "top 50%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        gsap.to(".sticky-footer", {
+            y: 0,
+            ease: "power2.easeInOut",
+            scrollTrigger: {
+                trigger: ".content-holder",
+                start: "top bottom-=50%",
+                end: "bottom bottom",
+                scrub: 1,
+            }
+        });
+
+        const dropdown = document.querySelector(".nav-item.dropdown");
+        const dropdownContent = document.querySelector(".dropdown-content");
+
+        dropdown.addEventListener("mouseenter", () => {
+            gsap.to(dropdownContent, {
+                opacity: 1,
+                y: 0,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        dropdown.addEventListener("mouseleave", () => {
+            gsap.to(dropdownContent, {
+                opacity: 0,
+                y: -10,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>
