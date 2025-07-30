@@ -1,640 +1,693 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fauzi Eka Putra</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="tes">
+        <div class="circle" data-order="1"></div>
+        <div class="circle" data-order="2"></div>
+        <div class="circle" data-order="3"></div>
+        <div class="circle" data-order="4"></div>
+        <div class="circle" data-order="5"></div>
+        <div class="circle" data-order="6"></div>
+        <div class="circle" data-order="6"></div>
+        <div class="circle" data-order="5"></div>
+        <div class="circle" data-order="4"></div>
+        <div class="circle" data-order="3"></div>
+        <div class="circle" data-order="2"></div>
+        <div class="circle" data-order="1"></div>
+      </div>
+    </nav>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <section class="hero">
+      <div class="shape">
+        <div>✦ ✦ ✦</div>
+        <div class="count" data-target="2025" style="font-size: 1rem">0</div>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/fauzi-eka-putra-086319286 "
+            target="_blank"
+            style="color: #000"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+        </div>
+        <div>
+          <a
+            href="https://github.com/Fauzzii"
+            target="_blank"
+            style="color: #000"
+            ><i class="fab fa-github"></i
+          ></a>
+        </div>
+        <div>
+          <a
+            href="https://www.instagram.com/fauzzii._/"
+            target="_blank"
+            style="color: #000"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+        <div class="count" data-target="1905" style="font-size: 1rem">0</div>
+        <div>✦ ✦ ✦</div>
+      </div>
 
-        html {
-            overscroll-behavior: none;
-        }
+      <div class="name">Fauzi Eka Putra</div>
+      <div class="wrapper"></div>
+      <div class="hero-cards">
+        <div class="card" id="hero-card-1">
+          <div class="card-title">
+            <span>Programming</span>
+            <span>01</span>
+          </div>
+          <div class="card-title">
+            <span>01</span>
+            <span>Programming</span>
+          </div>
+        </div>
+        <div class="card" id="hero-card-2">
+          <div class="card-title">
+            <span> Design</span>
+            <span>02</span>
+          </div>
+          <div class="card-title">
+            <span>02</span>
+            <span>Design</span>
+          </div>
+        </div>
+        <div class="card" id="hero-card-3">
+          <div class="card-title">
+            <span>Others</span>
+            <span>03</span>
+          </div>
+          <div class="card-title">
+            <span>03</span>
+            <span>Others</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-circles">
+        <div class="circle" data-order="1"></div>
+        <div class="circle" data-order="2"></div>
+        <div class="circle" data-order="3"></div>
+        <div class="circle" data-order="4"></div>
+        <div class="circle" data-order="5"></div>
+        <div class="circle" data-order="6"></div>
+        <div class="circle" data-order="6"></div>
+        <div class="circle" data-order="5"></div>
+        <div class="circle" data-order="4"></div>
+        <div class="circle" data-order="3"></div>
+        <div class="circle" data-order="2"></div>
+        <div class="circle" data-order="1"></div>
+      </div>
+    </section>
 
-        html,
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            height: 100%;
-            overflow-x: hidden;
-        }
-
-        h1 {
-            font-size: 10vw;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-        }
-
-        p {
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.5;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .nav {
-            position: fixed;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            height: 8vh;
+    <section class="about">
+      <div class="left reveal-left">
+        <h1
+          class="reveal"
+          style="
+            font-size: 3vw;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-            z-index: 1000;
-            transition: top 0.3s ease-in-out;
-        }
-
-        .nav.hide {
-            top: -100px;
-        }
-
-        .nav.scrolled a {
-            color: #fff;
-        }
-
-        .nav.scrolled .sub-item {
-            color: #737272;
-        }
-
-        .nav a {
-            color: #000;
-            text-decoration: none;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-item {
-            margin: 0 6vw;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .sub-item {
-            display: block;
-            font-size: 1rem;
-            margin-top: 5px;
-            color: #737272;
-        }
-
-        .nav-right {
-            display: flex;
-        }
-
-        .header {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            width: 100%;
-            z-index: 2;
-        }
-
-        .letters {
-            flex: 1;
-            display: flex;
-            text-transform: uppercase;
-            font-family: arial;
-        }
-
-        .letters>div {
-            flex: 1;
-            font-size: 18vw;
-            font-weight: 400;
-            color: #000;
-            text-align: center;
-        }
-
-        .website-content {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 100vh;
-        }
-
-        .img-holder {
-            position: relative;
-            top: 0;
-            width: 100%;
-            height: 100vh;
-            background: #eaeaea;
-            clip-path: polygon(37.5% 20%, 62.5% 20%, 62.5% 80%, 37.5% 80%);
-            transform: rotate(30deg);
-        }
-
-        .img-holder img {
-            position: relative;
-            transform: scale(2);
-        }
-
-        .content-holder {
-            position: relative;
-            top: -5px;
-            width: 100%;
-            background: #000;
-            color: #eaeaea;
-            padding: 1em;
-            overflow-x: hidden;
-        }
-
-        .row {
-            margin: 2em 0;
-            padding: 0 1em;
-        }
-
-        .img {
-            width: 100%;
-            height: 275px;
-            overflow: hidden;
-        }
-
-        .row:nth-child(2) .img,
-        .row:nth-child(3) .img,
-        .row:nth-child(4) .img {
-            position: relative;
-            left: 0;
-        }
-
-        .row:nth-child(6) p {
-            position: relative;
-            left: 0;
-            margin: 4em auto;
-        }
-
-        #reveal-text {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 5vw;
-            font-weight: bold;
-            color: #fff;
-            z-index: 10001;
-            opacity: 0;
-        }
-
-        #reveal-top,
-        #reveal-bottom {
-            position: fixed;
-            left: 0;
-            width: 100%;
-            height: 50vh;
-            background-color: #000;
-            z-index: 10000;
-        }
-
-        #reveal-top {
-            top: 0;
-        }
-
-        #reveal-bottom {
-            bottom: 0;
-        }
-
-        .header-row {
-            width: 100%;
-            height: 100px;
-        }
-
-        .header-row:nth-child(1) {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        .header-row:nth-child(2) {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        .sticky-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30vh;
-            background-color: white;
-            display: flex;
             justify-content: center;
-            /* Pusatkan secara horizontal */
-            align-items: center;
-            /* Pusatkan secara vertikal */
-            z-index: 1000;
-            font-size: 24px;
-            border-radius: 40px;
-            color: #000;
-            box-sizing: border-box;
-            transform: translateY(300vh);
-        }
+            text-align: center;
+            padding-top: 12vh;
+            flex-wrap: wrap;
+            flex-direction: row;
+          "
+        >
+          From crafting responsive front-end interfaces to developing robust
+          back-end systems, I enjoy bringing complete digital solutions to life.
+          I work with modern tools and frameworks to create applications that
+          are fast, secure, and user-focused.
+        </h1>
+      </div>
 
-        .sticky-footer p {
-            font-size: 100px;
-            font-weight: bolder;
-            white-space: nowrap;
-            margin: 0;
-            /* Hapus margin-left */
-        }
-
-        .nav-item.dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .nav-right a.nav-item {
-                display: none;
-            }
-
-            .dropdown {
-                display: block;
-            }
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #fff;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .dropdown-content a {
-            color: #000;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .nav-item.dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .nav-right a.nav-item {
-                display: none;
-            }
-
-            .dropdown {
-                display: block;
-            }
-        }
-
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                height: auto;
-                padding: 10px;
-            }
-
-            .nav-left,
-            .nav-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            .nav-item {
-                margin: 10px 0;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div id="reveal-top"></div>
-    <div id="reveal-bottom"></div>
-    <div id="reveal-text">Fauzi Eka Putra</div>
-
-    <div class="nav">
-        <div class="nav-left">
-            <a href="index.html" class="nav-logo">© Code by Fauzi</a>
-            <a href="main.html" class="nav-item">
-                WORK
-                <div class="sub-item">(PROJECTS)</div>
-            </a>
-            <div class="nav-item dropdown">
-                <a>CONTACT</a>
-                <div class="dropdown-content">
-                    <a href="https://www.linkedin.com/in/fauzi-eka-putra-086319286 " target="_blank"
-                        style="color: #000;"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/Fauzzii" target="_blank" style="color: #000;"><i
-                            class="fab fa-github"></i> GitHub</a>
-                    <a href="https://wa.me/62895321527164" target="_blank" style="color: #000;"><i
-                            class="fab fa-whatsapp"></i> WhatsApp</a>
-                </div>
+      <div class="right reveal-right">
+        <div class="container">
+          <div class="card-swap">
+            <div class="gulir">
+              <!-- <h3>Card 1</h3> -->
+              <div class="video">
+                <video src="assets/3.mp4" autoplay muted loop></video>
+              </div>
             </div>
+            <div class="gulir">
+              <!-- <h3>Card 2</h3> -->
+              <div class="video">
+                <video src="assets/2.mp4" autoplay muted loop></video>
+              </div>
+            </div>
+            <div class="gulir">
+              <!-- <h3>Card 3</h3> -->
+              <div class="video">
+                <video src="assets/1.mp4" autoplay muted loop></video>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="nav-right">
-            <a href="mailto:fauziekaputra704@gmail.com" class="nav-item">GET IN TOUCH <i
-                    class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </section>
+    <section class="services">
+      <div class="services-header">
+        <h1 style="font-weight: 500">
+          Solutions I Build So You Can Focus on What Matters
+        </h1>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="cards-container">
+        <div class="card" id="card-1">
+          <div class="card-wrapper">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-title">
+                  <span>Programming</span>
+                  <span>01</span>
+                </div>
+                <div class="card-title">
+                  <span>01</span>
+                  <span>Programming</span>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="card-title">
+                  <span>Programming</span>
+                  <span>01</span>
+                </div>
+                <div class="card-copy">
+                  <p>Web Development</p>
+                  <p>Database Management</p>
+                  <p>Object-Oriented Programming</p>
+                  <p>API Development & Integration</p>
+                  <p>Single Page Development</p>
+                  <p>Semantic MarkUp</p>
+                </div>
+                <div class="card-title">
+                  <span>01</span>
+                  <span>Programming</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="card" id="card-2">
+          <div class="card-wrapper">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-title">
+                  <span>Design</span>
+                  <span>02</span>
+                </div>
+                <div class="card-title">
+                  <span>02</span>
+                  <span>Design</span>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="card-title">
+                  <span>Design</span>
+                  <span>02</span>
+                </div>
+                <div class="card-copy">
+                  <p>UI UX Design</p>
+                  <p>Responsive Layout Creation</p>
+                  <p>Digital Visual Design</p>
+                  <p>Color Theory & Typography Principles</p>
+                  <p>Interactive Prototyping</p>
+                  <p>Visual Branding</p>
+                </div>
+                <div class="card-title">
+                  <span>02</span>
+                  <span>Design</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="card-3">
+          <div class="card-wrapper">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-title">
+                  <span>Others</span>
+                  <span>03</span>
+                </div>
+                <div class="card-title">
+                  <span>03</span>
+                  <span>Others</span>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="card-title">
+                  <span>Others</span>
+                  <span>03</span>
+                </div>
+                <div class="card-copy">
+                  <p>Collaborative Development</p>
+                  <p>Basic Cybersecurity Practices</p>
+                  <p>Structured IT Project Management</p>
+                  <p>Basic Machine Learning</p>
+                  <p>Web Performance Optimization</p>
+                  <p>Debugging & Troubleshooting</p>
+                </div>
+                <div class="card-title">
+                  <span>03</span>
+                  <span>Others</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
     </div>
 
-    <div class="header">
-        <div class="letters">
-            <div>D</div>
-            <div>I</div>
-            <div>V</div>
-            <div>E</div>
-        </div>
-        <div class="letters">
-            <div>D</div>
-            <div>O</div>
-            <div>W</div>
-            <div>N</div>
-        </div>
-    </div>
-
-    <div class="website-content">
-        <div class="img-holder">
-            <img src="assets/computer-keyboard-cup-tea-wooden-table-night.jpg" alt="Office">
+    <div class="project-container">
+        <!-- Floating decorative elements -->
+        <div class="floating-elements">
+            <div class="float-circle float-1"></div>
+            <div class="float-circle float-2"></div>
+            <div class="float-circle float-3"></div>
+            <div class="float-triangle float-4"></div>
+            <div class="float-triangle float-5"></div>
         </div>
 
-        <div class="content-holder">
-            <div class="row">
-                <section class="info">
-                    <div class="header-rows">
-                        <div class="header-row">
-                            <h1 id="fullstack-text">FullStack</h1>
+        <div class="projects-wrapper">
+            <div class="projects">
+                <!-- Project 1 -->
+                <section class="project" data-project="1">
+                    <div class="project-bg-pattern"></div>
+                    <div class="project-number">01</div>
+                    
+                    <div class="project-content">
+                        <div class="project-image">
+                            <div class="image-overlay"></div>
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="E-Commerce Platform">
+                            <div class="image-glow"></div>
                         </div>
-                        <div class="header-row">
-                            <h1 id="developer-text">Developer</h1>
+                        
+                        <div class="project-details">
+                            <div class="project-category">Web Development</div>
+                            <h2 class="project-title">
+                                <span class="title-word">E-Commerce</span>
+                                <span class="title-word">Platform</span>
+                            </h2>
+                            <div class="title-line"></div>
+                            
+                            <p class="project-description">
+                                Platform e-commerce modern dengan fitur lengkap termasuk sistem pembayaran, 
+                                manajemen inventory, dan dashboard admin yang komprehensif. Dibangun dengan 
+                                fokus pada user experience dan performa yang optimal.
+                            </p>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Stripe</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">View Project</a>
+                                <a href="#" class="project-link secondary">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Project 2 -->
+                <section class="project" data-project="2">
+                    <div class="project-bg-pattern"></div>
+                    <div class="project-number">02</div>
+                    
+                    <div class="project-content">
+                        <div class="project-image">
+                            <div class="image-overlay"></div>
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80" alt="Task Management App">
+                            <div class="image-glow"></div>
+                        </div>
+                        
+                        <div class="project-details">
+                            <div class="project-category">Mobile App</div>
+                            <h2 class="project-title">
+                                <span class="title-word">Task</span>
+                                <span class="title-word">Management</span>
+                            </h2>
+                            <div class="title-line"></div>
+                            
+                            <p class="project-description">
+                                Aplikasi manajemen tugas yang intuitif dengan fitur kolaborasi tim, 
+                                tracking progress real-time, dan integrasi dengan berbagai tools produktivitas. 
+                                Mendukung metodologi Agile dan Kanban board.
+                            </p>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Socket.io</span>
+                                <span class="tech-tag">SCSS</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">View Project</a>
+                                <a href="#" class="project-link secondary">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Project 3 -->
+                <section class="project" data-project="3">
+                    <div class="project-bg-pattern"></div>
+                    <div class="project-number">03</div>
+                    
+                    <div class="project-content">
+                        <div class="project-image">
+                            <div class="image-overlay"></div>
+                            <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Weather Dashboard">
+                            <div class="image-glow"></div>
+                        </div>
+                        
+                        <div class="project-details">
+                            <div class="project-category">Data Visualization</div>
+                            <h2 class="project-title">
+                                <span class="title-word">Weather</span>
+                                <span class="title-word">Dashboard</span>
+                            </h2>
+                            <div class="title-line"></div>
+                            
+                            <p class="project-description">
+                                Dashboard cuaca interaktif dengan visualisasi data yang menarik, 
+                                prediksi cuaca 7 hari ke depan, dan notifikasi cuaca ekstrem. 
+                                Mengintegrasikan multiple weather APIs untuk akurasi data terbaik.
+                            </p>
+                            
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Chart.js</span>
+                                <span class="tech-tag">Weather API</span>
+                                <span class="tech-tag">CSS Grid</span>
+                                <span class="tech-tag">PWA</span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="#" class="project-link primary">View Project</a>
+                                <a href="#" class="project-link secondary">Live Demo</a>
+                            </div>
                         </div>
                     </div>
                 </section>
             </div>
-
-            <div class="row">
-                <p id="about-text-1">I am a passionate Full Stack Developer with expertise in both front-end and
-                    back-end technologies. I specialize in creating responsive, user-friendly web applications that
-                    deliver seamless experiences across all devices. With a strong foundation in JavaScript, Laravel,
-                    PHP, and various databases, I bring ideas to life with clean, efficient, and scalable code.</p>
-            </div>
-
-            <div class="row">
-                <p id="about-text-2">Whether it's building robust APIs, designing intuitive user interfaces, or
-                    optimizing performance, I am committed to delivering high-quality solutions that meet the needs of
-                    users and businesses alike.</p>
-            </div>
-
-            <div class="row">
-                <div class="img">
-                </div>
-            </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="/js/card.js"></script>
+    <script src="/js/circle.js"></script>
+    <script src="/js/name.js"></script>
+    <script src="/js/count.js"></script>
+    <script src="/js/about.js"></script>
+    <script src="/js/slide-card.js"></script>
+    <script src="/js/circle-top.js"></script>
     <script>
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger)
 
-        function updateLayout() {
-            const contentHolderHeight = document.querySelector(".content-holder").offsetHeight;
-            const imgHolderHeight = window.innerHeight;
-            const additionalScrollHeight = window.innerHeight;
+// Custom cursor
+const cursor = { x: 0, y: 0 }
+const mouse = { x: 0, y: 0 }
 
-            const totalBodyHeight = contentHolderHeight + imgHolderHeight + additionalScrollHeight;
-            document.body.style.height = `${totalBodyHeight}px`;
-        }
+document.addEventListener("mousemove", (e) => {
+  mouse.x = e.clientX
+  mouse.y = e.clientY
+})
 
-        document.addEventListener("DOMContentLoaded", updateLayout);
-        window.addEventListener("resize", updateLayout);
+gsap.to(cursor, {
+  duration: 0.3,
+  repeat: -1,
+  onRepeat: () => {
+    gsap.set("body::before", {
+      css: {
+        left: mouse.x - 10,
+        top: mouse.y - 10,
+      },
+    })
+  },
+})
 
-        gsap.set("#reveal-text", { opacity: 0 });
-        gsap.set(".website-content", { opacity: 0 });
+// Initialize animations when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  initializeAnimations()
+})
 
-        gsap.to("#reveal-text", {
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            delay: 0.5,
-            onComplete: () => {
-                gsap.to("#reveal-text", {
-                    opacity: 0,
-                    duration: 1,
-                    delay: 0.8,
-                    ease: "power2.inOut",
-                    onComplete: () => {
-                        gsap.to("#reveal-top", { y: "-100%", duration: 1, ease: "power2.inOut" });
-                        gsap.to("#reveal-bottom", { y: "100%", duration: 1, ease: "power2.inOut" });
-                        gsap.to(".website-content", { opacity: 1, duration: 1, delay: 0.5 });
-                    }
-                });
-            }
-        });
+function initializeAnimations() {
+  // Get elements
+  const projectsContainer = document.querySelector(".projects")
+  const projects = document.querySelectorAll(".project")
+  const scrollProgress = document.querySelector(".scroll-progress")
+  const floatingElements = document.querySelectorAll(".float-circle, .float-triangle")
 
-        let lastScroll = 0;
-        const nav = document.querySelector(".nav");
+  // Set initial states
+  gsap.set(".title-word", { y: "100%" })
+  gsap.set(".title-line", { scaleX: 0, transformOrigin: "left" })
+  gsap.set(".project-description", { y: 30, opacity: 0 })
+  gsap.set(".tech-tag", { y: 20, opacity: 0 })
+  gsap.set(".project-link", { y: 20, opacity: 0 })
+  gsap.set(".stat", { y: 20, opacity: 0 })
 
-        window.addEventListener("scroll", () => {
-            const currentScroll = window.scrollY;
+  // Create horizontal scroll animation
+  const horizontalScroll = gsap.to(projectsContainer, {
+    x: () => -(projectsContainer.scrollWidth - window.innerWidth),
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".project-container",
+      pin: true,
+      scrub: 1,
+      end: () => "+=" + (projectsContainer.scrollWidth - window.innerWidth),
+      onUpdate: (self) => {
+        // Update scroll progress
+        gsap.to(scrollProgress, {
+          width: self.progress * 100 + "%",
+          duration: 0.1,
+        })
+      },
+    },
+  })
 
-            if (currentScroll > lastScroll) {
-                nav.classList.add("hide");
-            } else {
-                nav.classList.remove("hide");
-            }
+  // Animate floating elements
+  floatingElements.forEach((element, index) => {
+    gsap.to(element, {
+      y: "random(-100, 100)",
+      x: "random(-50, 50)",
+      rotation: "random(-180, 180)",
+      duration: "random(10, 20)",
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: index * 0.5,
+    })
 
-            lastScroll = currentScroll;
-        });
+    gsap.to(element, {
+      opacity: "random(0.05, 0.2)",
+      duration: "random(3, 6)",
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    })
+  })
 
-        const halfPageHeight = document.body.scrollHeight / 2;
+  // Animate each project
+  projects.forEach((project, index) => {
+    const titleWords = project.querySelectorAll(".title-word")
+    const titleLine = project.querySelector(".title-line")
+    const description = project.querySelector(".project-description")
+    const techTags = project.querySelectorAll(".tech-tag")
+    const projectLinks = project.querySelectorAll(".project-link")
+    const stats = project.querySelectorAll(".stat")
+    const projectImage = project.querySelector(".project-image")
+    const projectNumber = project.querySelector(".project-number")
 
-        window.addEventListener("scroll", () => {
-            if (window.scrollY >= halfPageHeight) {
-                nav.classList.add("scrolled");
-            } else {
-                nav.classList.remove("scrolled");
-            }
-        });
+    // Create timeline for each project
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: project,
+        containerAnimation: horizontalScroll,
+        start: "left 80%",
+        end: "right 20%",
+        scrub: 1,
+        onEnter: () => project.classList.add("animate-in"),
+        onLeave: () => project.classList.remove("animate-in"),
+      },
+    })
 
-        ScrollTrigger.create({
-            trigger: ".website-content",
-            start: "-0.1% top",
-            end: "bottom bottom",
-            onEnter: () => {
-                gsap.set(".website-content", { position: 'absolute', top: '195%' });
-            },
-            onLeaveBack: () => {
-                gsap.set(".website-content", { position: 'fixed', top: '0' });
-            }
-        });
+    // Animate project elements
+    tl.to(titleWords, {
+      y: 0,
+      duration: 1,
+      stagger: 0.1,
+      ease: "back.out(1.7)",
+    })
+      .to(
+        titleLine,
+        {
+          scaleX: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.5",
+      )
+      .to(
+        description,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.3",
+      )
+      .to(
+        stats,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+        },
+        "-=0.4",
+      )
+      .to(
+        techTags,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.05,
+          ease: "back.out(1.7)",
+        },
+        "-=0.3",
+      )
+      .to(
+        projectLinks,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+        },
+        "-=0.2",
+      )
 
-        gsap.to(".header .letters:first-child", {
-            x: () => -innerWidth * 3,
-            scale: 10,
-            ease: "power2.inOut",
-            scrollTrigger: {
-                start: "top top",
-                end: `+=200%`,
-                scrub: 5
-            }
-        });
+    // Parallax effect for project image
+    gsap.to(projectImage, {
+      y: -50,
+      scrollTrigger: {
+        trigger: project,
+        containerAnimation: horizontalScroll,
+        start: "left right",
+        end: "right left",
+        scrub: 1,
+      },
+    })
 
-        gsap.to(".header .letters:last-child", {
-            x: () => innerWidth * 3,
-            scale: 10,
-            ease: "power2.inOut",
-            scrollTrigger: {
-                start: "top top",
-                end: `+=200%`,
-                scrub: 5
-            }
-        });
+    // Animate project number
+    gsap.fromTo(
+      projectNumber,
+      {
+        opacity: 0.05,
+        scale: 0.8,
+      },
+      {
+        opacity: 0.1,
+        scale: 1,
+        scrollTrigger: {
+          trigger: project,
+          containerAnimation: horizontalScroll,
+          start: "left 70%",
+          end: "right 30%",
+          scrub: 1,
+        },
+      },
+    )
 
-        gsap.to(".img-holder", {
-            rotation: 0,
-            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-            ease: "power2.inOut",
-            scrollTrigger: {
-                start: "top top",
-                end: `+=200%`,
-                scrub: 5
-            }
-        });
+    // Add hover effects
+    project.addEventListener("mouseenter", () => {
+      gsap.to(projectImage.querySelector("img"), {
+        scale: 1.1,
+        duration: 0.6,
+        ease: "power2.out",
+      })
 
-        gsap.to(".img-holder img", {
-            scale: 1,
-            ease: "power2.inOut",
-            scrollTrigger: {
-                start: "top top",
-                end: `+=200%`,
-                scrub: 5
-            }
-        });
+      gsap.to(techTags, {
+        y: -5,
+        duration: 0.3,
+        stagger: 0.05,
+        ease: "power2.out",
+      })
+    })
 
-        gsap.from("#about-text-1", {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            scrollTrigger: {
-                trigger: "#about-text-1",
-                start: "top 80%",
-                end: "top 50%",
-                scrub: 1
-            }
-        });
+    project.addEventListener("mouseleave", () => {
+      gsap.to(projectImage.querySelector("img"), {
+        scale: 1,
+        duration: 0.6,
+        ease: "power2.out",
+      })
 
-        gsap.from("#about-text-2", {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            scrollTrigger: {
-                trigger: "#about-text-2",
-                start: "top 80%",
-                end: "top 50%",
-                scrub: 1
-            }
-        });
+      gsap.to(techTags, {
+        y: 0,
+        duration: 0.3,
+        stagger: 0.05,
+        ease: "power2.out",
+      })
+    })
+  })
 
-        gsap.from("#fullstack-text", {
-            x: -100,
-            opacity: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: ".header-rows",
-                start: "top 80%",
-                end: "top 50%",
-                toggleActions: "play none none reverse"
-            }
-        });
+  // Add smooth scrolling for better experience
+  gsap.to(window, {
+    scrollTo: 0,
+    duration: 0.1,
+  })
 
-        gsap.from("#developer-text", {
-            x: 100,
-            opacity: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: ".header-rows",
-                start: "top 80%",
-                end: "top 50%",
-                toggleActions: "play none none reverse"
-            }
-        });
+  // Refresh ScrollTrigger after everything is set up
+  ScrollTrigger.refresh()
+}
 
-        gsap.to(".sticky-footer", {
-            y: 0,
-            ease: "power2.easeInOut",
-            scrollTrigger: {
-                trigger: ".content-holder",
-                start: "top bottom-=50%",
-                end: "bottom bottom",
-                scrub: 1,
-            }
-        });
+// Handle resize
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh()
+})
 
-        const dropdown = document.querySelector(".nav-item.dropdown");
-        const dropdownContent = document.querySelector(".dropdown-content");
-
-        dropdown.addEventListener("mouseenter", () => {
-            gsap.to(dropdownContent, {
-                opacity: 1,
-                y: 0,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-
-        dropdown.addEventListener("mouseleave", () => {
-            gsap.to(dropdownContent, {
-                opacity: 0,
-                y: -10,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-
-
+// Add loading animation
+window.addEventListener("load", () => {
+  gsap.from("body", {
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+  })
+})
     </script>
-</body>
-
+  </body>
 </html>
