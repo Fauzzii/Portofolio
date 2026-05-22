@@ -132,23 +132,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const innerCard = document.querySelector(`${cardId} .flip-card-inner`);
 
+        const isMobile = window.innerWidth <= 768;
+
         let y;
-        if (cardProgress < 0.4) {
-          const normalizedProgress = cardProgress / 0.4;
-          y = gsap.utils.interpolate(
-            "-100%",
-            "50%",
-            smoothStep(normalizedProgress)
-          );
-        } else if (cardProgress < 0.6) {
-          const normalizedProgress = (cardProgress - 0.4) / 0.2;
-          y = gsap.utils.interpolate(
-            "50%",
-            "0%",
-            smoothStep(normalizedProgress)
-          );
+        if (isMobile) {
+          let baseY;
+          if (cardProgress < 0.4) {
+            const normalizedProgress = cardProgress / 0.4;
+            baseY = gsap.utils.interpolate(
+              -250,
+              50,
+              smoothStep(normalizedProgress)
+            );
+          } else if (cardProgress < 0.6) {
+            const normalizedProgress = (cardProgress - 0.4) / 0.2;
+            baseY = gsap.utils.interpolate(
+              50,
+              0,
+              smoothStep(normalizedProgress)
+            );
+          } else {
+            baseY = 0;
+          }
+
+          let yOffset;
+          if (cardProgress < 0.6) {
+            yOffset = index === 0 ? 100 : index === 1 ? 0 : -100;
+          } else if (cardProgress < 1) {
+            const normalizedProgress = (cardProgress - 0.6) / 0.4;
+            yOffset = gsap.utils.interpolate(
+              index === 0 ? 100 : index === 1 ? 0 : -100,
+              0,
+              smoothStep(normalizedProgress)
+            );
+          } else {
+            yOffset = 0;
+          }
+
+          y = `calc(${baseY}% + ${yOffset}%)`;
         } else {
-          y = "0%";
+          if (cardProgress < 0.4) {
+            const normalizedProgress = cardProgress / 0.4;
+            y = gsap.utils.interpolate(
+              "-100%",
+              "50%",
+              smoothStep(normalizedProgress)
+            );
+          } else if (cardProgress < 0.6) {
+            const normalizedProgress = (cardProgress - 0.4) / 0.2;
+            y = gsap.utils.interpolate(
+              "50%",
+              "0%",
+              smoothStep(normalizedProgress)
+            );
+          } else {
+            y = "0%";
+          }
         }
 
         let scale;
@@ -179,27 +218,46 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         let x, rotate, rotationY;
-        if (cardProgress < 0.6) {
-          x = index === 0 ? "100%" : index === 1 ? "0%" : "-100%";
-          rotate = index === 0 ? -5 : index === 1 ? 0 : 5;
-          rotationY = 0;
-        } else if (cardProgress < 1) {
-          const normalizedProgress = (cardProgress - 0.6) / 0.4;
-          x = gsap.utils.interpolate(
-            index === 0 ? "100%" : index === 1 ? "0%" : "-100%",
-            "0%",
-            smoothStep(normalizedProgress)
-          );
-          rotate = gsap.utils.interpolate(
-            index === 0 ? -5 : index === 1 ? 0 : 5,
-            0,
-            smoothStep(normalizedProgress)
-          );
-          rotationY = smoothStep(normalizedProgress) * 180;
-        } else {
+        if (isMobile) {
           x = "0%";
-          rotate = 0;
-          rotationY = 180;
+          if (cardProgress < 0.6) {
+            rotate = index === 0 ? -3 : index === 1 ? 0 : 3;
+            rotationY = 0;
+          } else if (cardProgress < 1) {
+            const normalizedProgress = (cardProgress - 0.6) / 0.4;
+            rotate = gsap.utils.interpolate(
+              index === 0 ? -3 : index === 1 ? 0 : 3,
+              0,
+              smoothStep(normalizedProgress)
+            );
+            rotationY = smoothStep(normalizedProgress) * 180;
+          } else {
+            rotate = 0;
+            rotationY = 180;
+          }
+        } else {
+          if (cardProgress < 0.6) {
+            x = index === 0 ? "100%" : index === 1 ? "0%" : "-100%";
+            rotate = index === 0 ? -5 : index === 1 ? 0 : 5;
+            rotationY = 0;
+          } else if (cardProgress < 1) {
+            const normalizedProgress = (cardProgress - 0.6) / 0.4;
+            x = gsap.utils.interpolate(
+              index === 0 ? "100%" : index === 1 ? "0%" : "-100%",
+              "0%",
+              smoothStep(normalizedProgress)
+            );
+            rotate = gsap.utils.interpolate(
+              index === 0 ? -5 : index === 1 ? 0 : 5,
+              0,
+              smoothStep(normalizedProgress)
+            );
+            rotationY = smoothStep(normalizedProgress) * 180;
+          } else {
+            x = "0%";
+            rotate = 0;
+            rotationY = 180;
+          }
         }
 
         gsap.set(cardId, {
@@ -213,6 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.set(innerCard, {
           rotationY: rotationY,
         });
+
       });
     },
   });

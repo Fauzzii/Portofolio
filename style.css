@@ -80,10 +80,12 @@ section {
 
 .name {
   display: flex;
+  flex-wrap: wrap;
   padding-top: 80px;
   justify-content: center;
+  text-align: center;
   font-weight: 500;
-  font-size: 10rem;
+  font-size: clamp(3rem, 10vw, 10rem);
   visibility: hidden;
   z-index: 1;
 }
@@ -112,21 +114,27 @@ section {
 .shape div:nth-child(1) {
   animation-delay: 0s;
 }
+
 .shape div:nth-child(2) {
   animation-delay: 0.1s;
 }
+
 .shape div:nth-child(3) {
   animation-delay: 0.2s;
 }
+
 .shape div:nth-child(4) {
   animation-delay: 0.3s;
 }
+
 .shape div:nth-child(5) {
   animation-delay: 0.4s;
 }
+
 .shape div:nth-child(6) {
   animation-delay: 0.5s;
 }
+
 .shape div:nth-child(7) {
   animation-delay: 0.6s;
 }
@@ -743,10 +751,12 @@ section {
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-20px) rotate(180deg);
   }
@@ -770,6 +780,7 @@ section {
 }
 
 @media (max-width: 768px) {
+
   .timeline-item:nth-child(even) .content,
   .timeline-item:nth-child(odd) .content {
     margin: 0;
@@ -847,8 +858,10 @@ section {
 }
 
 .services {
-  padding: 6rem 2rem;
+  padding: 0rem 2rem;
+  margin-top: -8rem;
   position: relative;
+  z-index: 10;
 }
 
 .services-header {
@@ -857,6 +870,16 @@ section {
   text-align: center;
   will-change: transform;
 }
+
+.services-header h1 {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  max-width: 90%;
+  margin: 0 auto;
+  letter-spacing: -0.02em;
+}
+
 
 .cards {
   position: fixed;
@@ -901,9 +924,11 @@ section {
   0% {
     transform: translate(-50%, -50%);
   }
+
   50% {
     transform: translate(-50%, -55%);
   }
+
   100% {
     transform: translate(-50%, -50%);
   }
@@ -1063,11 +1088,320 @@ section {
 .circle-deco {
   width: 200vw;
   height: 500px;
-  background: var(--dark); /* Ganti sesuai warna latar yang diinginkan */
+  background: var(--dark);
+  /* Ganti sesuai warna latar yang diinginkan */
   border-radius: 100%;
   position: absolute;
-  top: -400px; /* Geser agar hanya 20% terlihat */
+  top: -400px;
+  /* Geser agar hanya 20% terlihat */
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
+}
+
+/* ==========================================
+   Premium Responsive Design Updates
+   ========================================== */
+
+/* Tablet & Mobile Screens (Large & Medium Devices) */
+@media (max-width: 992px) {
+  nav {
+    top: -110px !important;
+    padding: 1rem !important;
+  }
+
+  .hero-circles,
+  .tes {
+    width: 150vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* About Section Stacking & Card Sizing */
+  .about {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    padding: 6rem 1.5rem 4rem 1.5rem;
+    gap: 3rem;
+  }
+
+  .about .left, 
+  .about .right {
+    width: 100%;
+    height: auto;
+  }
+
+  .about h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+    padding-top: 0 !important;
+    line-height: 1.4;
+  }
+
+  .card-swap {
+    height: 460px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .gulir {
+    width: 85%;
+    max-width: 440px;
+    height: 340px;
+  }
+
+  /* Services Pinned Cards Section */
+  .cards-container {
+    width: 90%;
+    gap: 1.5rem;
+  }
+
+  /* Projects Section Spacing & Text Scaling */
+  .project-content {
+    flex-direction: column;
+    padding: 80px 20px 40px 20px;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .project-image {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 16 / 10;
+  }
+
+  .project-details {
+    gap: 20px;
+  }
+
+  .project-title {
+    font-size: 2.8rem;
+  }
+
+  .project-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .tech-tag {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Screens (Small Devices) */
+@media (max-width: 768px) {
+  nav {
+    top: -90px !important;
+    padding: 1rem !important;
+  }
+
+  .hero-circles,
+  .tes {
+    width: 180vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Hero Section */
+  .hero-cards {
+    width: 80%;
+  }
+
+  .shape {
+    margin-top: 60px;
+    font-size: 0.9rem;
+    padding: 0 1rem;
+    gap: 0.25rem;
+  }
+
+  .shape div {
+    font-size: 0.9rem !important;
+  }
+
+  .shape .count {
+    font-size: 0.9rem !important;
+  }
+
+  .services {
+    padding: 3rem 1.5rem !important;
+  }
+
+  .services-header h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+    max-width: 95% !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Services Section Pinned Cards */
+  .cards-container {
+    flex-direction: column !important;
+    width: 90% !important;
+    max-width: 450px !important;
+    gap: 1.2rem !important;
+    justify-content: flex-end !important;
+    padding-bottom: 8vh !important;
+  }
+
+  .cards-container .card {
+    width: 100% !important;
+    max-width: 450px !important;
+    aspect-ratio: 21 / 9 !important;
+    flex: none !important;
+  }
+
+  .flip-card-front, 
+  .flip-card-back {
+    padding: 0.8rem !important;
+  }
+
+  .flip-card-back {
+    gap: 0.4rem !important;
+    justify-content: center !important;
+  }
+
+  /* Hide all card-titles on back card on mobile to maximize copy space */
+  .flip-card-back .card-title {
+    display: none !important;
+  }
+
+  .card-copy {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .card-copy p {
+    font-size: clamp(0.65rem, 2.4vw, 0.8rem) !important;
+    padding: 0.4rem !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    background-color: var(--light2) !important;
+    border-radius: 0.25rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+
+  /* Projects Section Spacing & Text Scaling */
+  .project-content {
+    padding: 60px 15px 30px 15px;
+    gap: 20px;
+  }
+
+  .project-image {
+    max-width: 100%;
+    max-height: 25vh; /* Keep image smaller vertically to avoid clipping */
+  }
+
+  .project-title {
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .project-tech {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .tech-tag {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .project-links {
+    margin-top: 15px;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .project-link {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  .project-number {
+    font-size: 4rem;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+/* Extra Small Screens (XS Devices) */
+@media (max-width: 480px) {
+  nav {
+    top: -70px !important;
+    padding: 0.75rem !important;
+  }
+
+  .hero-circles,
+  .tes {
+    width: 220vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .hero-cards {
+    width: 90%;
+  }
+
+  .shape {
+    margin-top: 40px;
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+  }
+
+  .shape div {
+    font-size: 0.8rem !important;
+  }
+
+  .shape .count {
+    font-size: 0.8rem !important;
+  }
+
+  .gulir {
+    width: 95%;
+    height: 280px;
+  }
+
+  .card-swap {
+    height: 400px;
+  }
+}
+
+/* Landscape orientation adjustments for mobile (prevents vertical clipping) */
+@media (max-height: 600px) and (max-width: 992px) {
+  .project-image {
+    display: none; /* Hide project images in very short landscape viewports to fit text content */
+  }
+  
+  .project-content {
+    padding: 40px 10px 10px 10px;
+    gap: 10px;
+  }
+  
+  .project-title {
+    font-size: 1.8rem;
+  }
+  
+  .project-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+
+/* Custom Cursor Handling for Touch Devices */
+@media (hover: none) {
+  body::before {
+    display: none !important; /* Hide custom cursor element on mobile/tablet */
+  }
 }
