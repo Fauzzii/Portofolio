@@ -153,7 +153,7 @@ export default function Contact() {
         </div>
 
         <div className="ctc-heading text-center mb-20 opacity-0 overflow-hidden">
-          <h2 className="text-5xl md:text-8xl font-extrabold tracking-tight leading-none m-0">
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-none m-0">
             Let's make<br />
             <span className="relative inline-block mt-2">
               <span className="bg-gradient-to-r from-[#22d3ee] via-[#f472b6] to-[#facc15] bg-clip-text text-transparent">something</span>

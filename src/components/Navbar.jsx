@@ -21,20 +21,20 @@ export default function Navbar() {
 
       setIsScrolled(currentScrollY > 60);
 
-      if (currentScrollY > 100 && scrollDelta > 8 && !isHidden) {
+      if (currentScrollY > 50 && scrollDelta > 1 && !isHidden) {
         isHidden = true;
         gsap.to(wrapper, {
           y: -140,
-          duration: 0.5,
-          ease: "back.in(1.7)",
+          duration: 0.35,
+          ease: "power2.inOut",
           overwrite: "auto"
         });
-      } else if ((scrollDelta < -8 || currentScrollY <= 50) && isHidden) {
+      } else if ((scrollDelta < -1 || currentScrollY <= 20) && isHidden) {
         isHidden = false;
         gsap.to(wrapper, {
           y: 0,
-          duration: 0.6,
-          ease: "back.out(1.7)",
+          duration: 0.35,
+          ease: "power2.out",
           overwrite: "auto"
         });
       }

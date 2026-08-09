@@ -172,7 +172,7 @@ export default function Experience() {
 
         <div className="exp-header mb-28">
           <p className="exp-tag font-mono text-[0.7rem] tracking-[0.2em] uppercase text-black/40 mb-4 opacity-0">✦ Career Journey ✦</p>
-          <h2 className="exp-title text-5xl md:text-7xl font-extrabold tracking-tight leading-none text-[#111] opacity-0">
+          <h2 className="exp-title text-4xl md:text-6xl font-extrabold tracking-tight leading-none text-[#111] opacity-0">
             Where I've<br /><span className="text-black/20 font-light italic">been.</span>
           </h2>
           <p className="exp-subtitle text-[1.05rem] text-black/50 mt-6 max-w-[420px] leading-relaxed opacity-0">A few stops along the way — each one taught me something new.</p>

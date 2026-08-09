@@ -141,7 +141,7 @@ export default function Stats() {
           <div className="inline-block font-mono text-[0.7rem] tracking-[0.2em] uppercase text-black/45 bg-black/5 border border-black/10 px-5 py-2 rounded-full mb-6">
             ✦ By The Numbers ✦
           </div>
-          <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }} className="font-bold tracking-tight leading-none">
+          <h2 style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)' }} className="font-bold tracking-tight leading-none">
             A lot has happened in<br />
             <span className="relative inline-block">
               a short time.
