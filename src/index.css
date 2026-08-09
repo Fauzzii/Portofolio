@@ -194,6 +194,7 @@ section {
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  overflow: hidden;
 }
 
 .hero-glow-1 {
@@ -366,29 +367,38 @@ section {
 }
 
 /* Floating Tech Badges */
-.floating-badge {
+.floating-badge-wrapper {
   position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
-  border-radius: 999px;
-  padding: 0.4rem 0.9rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #111;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(8px);
   z-index: 3;
   pointer-events: none;
 }
 
-.fb-1 { top: 22%; left: 8%; animation: floatA 7s ease-in-out infinite; }
-.fb-2 { top: 32%; right: 9%; animation: floatB 9s ease-in-out infinite 1s; }
-.fb-3 { top: 62%; left: 6%; animation: floatB 8s ease-in-out infinite 0.5s; }
-.fb-4 { top: 70%; right: 7%; animation: floatA 10s ease-in-out infinite 1.5s; }
+.fb-1 { top: 22%; left: 14%; }
+.fb-2 { top: 28%; right: 14%; }
+.fb-3 { top: 60%; left: 12%; }
+.fb-4 { top: 66%; right: 12%; }
+
+.floating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #111;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+
+.fb-1 .floating-badge { animation: floatA 7s ease-in-out infinite; }
+.fb-2 .floating-badge { animation: floatB 9s ease-in-out infinite 1s; }
+.fb-3 .floating-badge { animation: floatB 8s ease-in-out infinite 0.5s; }
+.fb-4 .floating-badge { animation: floatA 10s ease-in-out infinite 1.5s; }
 
 .shape {
   display: flex;
@@ -480,12 +490,15 @@ section {
    ========================================================================== */
 .about {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
-  min-height: 100vh;
-  padding: 4rem 2rem;
+  min-height: 85vh;
+  padding: 10rem 2rem;
   background-color: var(--dark);
   color: var(--light);
   position: relative;
+  overflow: hidden;
 }
 
 .about-bg-grid {
@@ -497,20 +510,22 @@ section {
   pointer-events: none;
 }
 
-.left, .right { width: 50%; height: 100%; position: relative; z-index: 1; }
-.right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.reveal-text span {
+  text-transform: none !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
 }
 
-.about h1 {
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
-  font-weight: 500;
-  line-height: 1.35;
-  text-align: left;
-  padding-top: 10vh;
+.about-photo-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.about-photo-card img {
+  transform: translateZ(15px) scale(1.05);
+  transition: transform 0.4s ease;
 }
 
 .reveal-left,
@@ -1003,7 +1018,7 @@ section {
     font-size: 0.65rem;
   }
   
-  .floating-badge { display: none; }
+  .floating-badge-wrapper { display: none; }
 
   .tes {
     width: 150vw !important;

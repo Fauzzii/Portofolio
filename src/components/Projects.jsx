@@ -207,10 +207,10 @@ export default function Projects() {
   return (
     <section id="projects" ref={sectionRef} className="relative bg-[#111] text-white overflow-hidden">
       <div id="proj-pin-wrap" className="sticky top-0 h-screen overflow-hidden flex items-center">
-        
+
         <div id="proj-label" className="absolute left-10 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
           <div style={{ writingMode: 'vertical-lr', transform: 'rotate(180deg)' }} className="font-mono text-[10px] tracking-[0.25em] uppercase text-white/35">
-            Featured Projects
+            
           </div>
         </div>
 
@@ -233,7 +233,7 @@ export default function Projects() {
               <div className="p-7">
                 <h3 className="text-[1.6rem] font-extrabold tracking-tight text-[#111] mb-2">{proj.title}</h3>
                 <p className="text-[0.92rem] text-black/75 font-medium leading-relaxed mb-5">{proj.desc}</p>
-                
+
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {proj.techs.map((t, index) => (
                     <span
@@ -244,7 +244,7 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                
+
                 <button
                   type="button"
                   onClick={() => openModal(proj)}
@@ -303,7 +303,7 @@ export default function Projects() {
             <div className="p-8">
               <h2 className="text-3xl font-extrabold tracking-tight text-[#111] mb-2">{modalProject.title}</h2>
               <p className="text-[0.95rem] text-black/75 font-medium leading-relaxed mb-6">{modalProject.desc}</p>
-              
+
               <div className="flex flex-wrap gap-2 mb-6">
                 {modalProject.techs.map((t, index) => (
                   <span

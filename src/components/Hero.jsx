@@ -37,6 +37,10 @@ export default function Hero() {
   const nameRef = useRef(null);
 
   useEffect(() => {
+    let heroSection;
+    let onHeroMouseMove;
+    let ctaListeners = [];
+
     const ctx = gsap.context(() => {
       const chars = nameRef.current.querySelectorAll('.char');
       gsap.set(nameRef.current, { visibility: 'visible' });
@@ -106,9 +110,63 @@ export default function Hero() {
         },
       });
 
+      const ctas = containerRef.current.querySelectorAll('.btn-primary, .btn-secondary');
+      ctas.forEach(btn => {
+        const onBtnEnter = () => gsap.to(btn, { scale: 1.05, duration: 0.3, ease: 'back.out(1.5)' });
+        const onBtnLeave = () => gsap.to(btn, { scale: 1, x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,.4)' });
+        const onBtnMove = (e) => {
+          const r  = btn.getBoundingClientRect();
+          const dx = (e.clientX - r.left - r.width  / 2) * 0.35;
+          const dy = (e.clientY - r.top  - r.height / 2) * 0.35;
+          gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power1.out' });
+        };
+
+        btn.addEventListener('mouseenter', onBtnEnter);
+        btn.addEventListener('mouseleave', onBtnLeave);
+        btn.addEventListener('mousemove', onBtnMove);
+
+        ctaListeners.push({
+          btn,
+          enter: onBtnEnter,
+          leave: onBtnLeave,
+          move: onBtnMove
+        });
+      });
+
+      const badgeWrappers = containerRef.current.querySelectorAll('.floating-badge-wrapper');
+      onHeroMouseMove = (e) => {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const dx = (e.clientX - cx) / cx;
+        const dy = (e.clientY - cy) / cy;
+
+        badgeWrappers.forEach((wrapper, idx) => {
+          const factor = (idx + 1) * 18;
+          gsap.to(wrapper, {
+            x: dx * factor,
+            y: dy * factor,
+            duration: 0.6,
+            ease: 'power2.out'
+          });
+        });
+      };
+      
+      heroSection = containerRef.current;
+      heroSection.addEventListener('mousemove', onHeroMouseMove);
+
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      if (heroSection && onHeroMouseMove) {
+        heroSection.removeEventListener('mousemove', onHeroMouseMove);
+      }
+      ctaListeners.forEach(({ btn, enter, leave, move }) => {
+        btn.removeEventListener('mouseenter', enter);
+        btn.removeEventListener('mouseleave', leave);
+        btn.removeEventListener('mousemove', move);
+      });
+    };
   }, []);
 
   const nameWords = "Fauzi Eka Putra".split(" ");
@@ -118,10 +176,18 @@ export default function Hero() {
       <div className="hero-glow-1"></div>
       <div className="hero-glow-2"></div>
 
-      <div className="floating-badge fb-1"><span>⚡ React.js</span></div>
-      <div className="floating-badge fb-2"><span>✦ Node.js</span></div>
-      <div className="floating-badge fb-3"><span>◈ GSAP</span></div>
-      <div className="floating-badge fb-4"><span>⬡ Tailwind</span></div>
+      <div className="floating-badge-wrapper fb-1">
+        <div className="floating-badge">⚡ React.js</div>
+      </div>
+      <div className="floating-badge-wrapper fb-2">
+        <div className="floating-badge">✦ Node.js</div>
+      </div>
+      <div className="floating-badge-wrapper fb-3">
+        <div className="floating-badge">◈ GSAP</div>
+      </div>
+      <div className="floating-badge-wrapper fb-4">
+        <div className="floating-badge">⬡ Tailwind</div>
+      </div>
 
       <div className="name select-none" ref={nameRef} style={{ visibility: 'hidden' }}>
         {nameWords.map((word, wIdx) => (
@@ -141,7 +207,7 @@ export default function Hero() {
 
       <div className="hero-cta-group">
         <a href="#projects" className="btn-primary">Explore Work ✦</a>
-        <a href="#contact" className="btn-secondary">Get In Touch 💬</a>
+        <a href="#contact" className="btn-secondary">Get In Touch</a>
       </div>
 
       <div className="shape">

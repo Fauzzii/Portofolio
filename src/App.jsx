@@ -33,7 +33,7 @@ export default function App() {
     gsap.ticker.lagSmoothing(0);
 
     window.addEventListener('load', () => ScrollTrigger.refresh());
-    
+
     const handleResize = () => ScrollTrigger.refresh();
     window.addEventListener('resize', handleResize);
 
