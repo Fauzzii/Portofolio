@@ -121,9 +121,13 @@ export default function Contact() {
       .to(btn, { scale: 1.05, duration: 0.20, ease: 'back.out(2)' })
       .to(btn, { scale: 1,    duration: 0.40, ease: 'elastic.out(1,.4)' });
 
+    const subject = encodeURIComponent(`Message from ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    window.location.href = `mailto:fauziekaputra704@gmail.com?subject=${subject}&body=${body}`;
+
     setBtnSent(true);
-    setBtnText('Message Sent!');
-    triggerToast('✦ Thank you! Your message has been sent.');
+    setBtnText('MESSAGE SENT!');
+    triggerToast('✦ Opening email client...');
 
     setTimeout(() => {
       setBtnSent(false);
@@ -234,11 +238,7 @@ export default function Contact() {
               <button
                 type="submit"
                 ref={submitBtnRef}
-                style={{
-                  background: btnSent ? '#22d3ee' : 'linear-gradient(135deg,#22d3ee,#f472b6)',
-                  color: btnSent ? '#fff' : '#000'
-                }}
-                className="flex items-center justify-center gap-3 p-4.5 rounded-[12px] border-none font-bold text-[0.9rem] font-mono tracking-wider cursor-pointer transition-all duration-350 ease-out"
+                className={`ctc-btn-custom ${btnSent ? 'sent' : ''}`}
               >
                 <i className={btnSent ? "fas fa-check" : "fas fa-paper-plane"}></i>
                 {btnText}

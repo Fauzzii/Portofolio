@@ -133,7 +133,6 @@ export default function Stats() {
         NUMBERS
       </div>
 
-      <div className="stats-blob absolute -top-[60px] -right-[60px] w-[280px] h-[280px] rounded-full bg-[#e5d9f6] opacity-50 blur-[60px] pointer-events-none"></div>
       <div className="stats-blob absolute -bottom-[40px] -left-[40px] w-[220px] h-[220px] rounded-full bg-[#ffd2f3] opacity-40 blur-[50px] pointer-events-none"></div>
 
       <div className="max-w-[1100px] mx-auto relative z-10">
