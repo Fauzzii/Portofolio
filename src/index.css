@@ -891,7 +891,17 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   background: rgba(255, 255, 255, 0.02) !important;
   border-radius: 14px !important;
+  padding: 1.15rem 1.4rem !important;
+  width: 100% !important;
+  color: #ffffff !important;
+  outline: none !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 0.95rem !important;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.ctc-field textarea {
+  resize: none !important;
 }
 
 .ctc-field input:focus,
@@ -902,15 +912,29 @@ section {
   transform: translateY(-2px);
 }
 
+.ctc-field label {
+  position: absolute;
+  left: 1.4rem;
+  top: 1.15rem;
+  color: rgba(255, 255, 255, 0.3) !important;
+  pointer-events: none;
+  transition: all 0.25s ease-in-out !important;
+  font-family: "DM Mono", monospace !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+}
+
 .ctc-field input:not(:placeholder-shown) + label,
 .ctc-field input:focus + label,
 .ctc-field textarea:not(:placeholder-shown) + label,
 .ctc-field textarea:focus + label {
-  top: -.6rem !important;
-  font-size: .68rem !important;
+  top: -.65rem !important;
+  left: 1rem !important;
+  font-size: .65rem !important;
   color: #22d3ee !important;
-  background: #050507;
-  padding: 0 .5rem;
+  background: #050507 !important;
+  padding: 0 .5rem !important;
   letter-spacing: 0.05em;
   font-weight: 700;
 }

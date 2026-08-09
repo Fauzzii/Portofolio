@@ -204,9 +204,8 @@ export default function Contact() {
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder=" "
                   required
-                  className="w-full bg-white/3 border border-white/10 rounded-[12px] p-4.5 text-white text-[0.95rem] outline-none transition-all duration-300 font-sans"
                 />
-                <label htmlFor="ctc-name" className="absolute left-[1.25rem] top-[1.1rem] text-white/30 pointer-events-none transition-all duration-250 font-mono text-[0.75rem]">Your Name</label>
+                <label htmlFor="ctc-name">Your Name</label>
               </div>
 
               <div className="ctc-field relative">
@@ -217,9 +216,8 @@ export default function Contact() {
                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                   placeholder=" "
                   required
-                  className="w-full bg-white/3 border border-white/10 rounded-[12px] p-4.5 text-white text-[0.95rem] outline-none transition-all duration-300 font-sans"
                 />
-                <label htmlFor="ctc-email" className="absolute left-[1.25rem] top-[1.1rem] text-white/30 pointer-events-none transition-all duration-250 font-mono text-[0.75rem]">Email Address</label>
+                <label htmlFor="ctc-email">Email Address</label>
               </div>
 
               <div className="ctc-field relative">
@@ -230,9 +228,8 @@ export default function Contact() {
                   onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                   placeholder=" "
                   required
-                  className="w-full bg-white/3 border border-white/10 rounded-[12px] p-4.5 text-white text-[0.95rem] outline-none transition-all duration-300 resize-none font-sans"
                 ></textarea>
-                <label htmlFor="ctc-msg" className="absolute left-[1.25rem] top-[1.1rem] text-white/30 pointer-events-none transition-all duration-250 font-mono text-[0.75rem]">What's on your mind?</label>
+                <label htmlFor="ctc-msg">What's on your mind?</label>
               </div>
 
               <button
