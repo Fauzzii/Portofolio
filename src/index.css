@@ -40,6 +40,19 @@ span {
   font-weight: 500;
 }
 
+.name span,
+.exp-title span,
+.stats-header h2 span,
+.ctc-heading h2 span {
+  text-transform: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
 section {
   position: relative;
   width: 100vw;
