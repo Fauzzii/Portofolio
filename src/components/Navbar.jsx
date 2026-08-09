@@ -66,7 +66,6 @@ export default function Navbar() {
     { label: 'Services', href: '#services', id: 'services' },
     { label: 'Projects', href: '#projects', id: 'projects' },
     { label: 'Experience', href: '#experience', id: 'experience' },
-    { label: 'Sudoku', href: '#sudoku', id: 'sudoku' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 

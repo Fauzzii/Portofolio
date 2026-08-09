@@ -127,7 +127,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section id="stats" className="relative bg-[#f9f4eb] text-black py-28 px-8 overflow-hidden">
+    <section id="stats" className="relative bg-[#f9f4eb] text-black pt-12 pb-28 px-8 overflow-hidden">
       
       <div style={{ fontSize: 'clamp(8rem, 20vw, 18rem)' }} className="font-extrabold text-black/[0.035] whitespace-nowrap absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none tracking-tighter font-sans">
         NUMBERS

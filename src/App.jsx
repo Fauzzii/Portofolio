@@ -11,7 +11,6 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Stats from './components/Stats';
-import Sudoku from './components/Sudoku';
 import Contact from './components/Contact';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -58,7 +57,6 @@ export default function App() {
         <Projects />
         <Experience />
         <Stats />
-        <Sudoku />
         <Contact />
       </main>
     </>

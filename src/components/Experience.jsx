@@ -161,7 +161,7 @@ export default function Experience() {
   }, []);
 
   return (
-    <section id="experience" ref={containerRef} className="relative bg-[#f9f4eb] text-[#111] py-36 px-8 overflow-hidden">
+    <section id="experience" ref={containerRef} className="relative bg-[#f9f4eb] text-[#111] pt-36 pb-0 px-8 overflow-hidden">
       
       <div className="plx-deco select-none pointer-events-none absolute text-[4rem] opacity-[0.18]" data-speed="0.15" style={{ top: '6%', left: '3%', animation: 'floatA 6s ease-in-out infinite' }}>✦</div>
       <div className="plx-deco pointer-events-none absolute w-[90px] h-[90px] rounded-full border-3 border-black/5" data-speed="0.25" style={{ top: '20%', right: '5%', backgroundColor: 'var(--accent-2)', animation: 'floatB 8s ease-in-out infinite' }}></div>
