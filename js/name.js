@@ -21,7 +21,7 @@ gsap.registerPlugin(ScrollTrigger);
             start: "top top",
             end: () =>
               `+=${document.querySelector(".name").offsetHeight * 0.5}`,
-            scrub: 1,
+            scrub: true,
           },
         });
       }

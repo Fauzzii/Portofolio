@@ -1,71 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fauzi Eka Putra</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-    <script src="https://unpkg.com/split-type"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    />
-  </head>
-  <body>
-    <nav>
-      <div class="tes">
-        <div class="circle" data-order="1"></div>
-        <div class="circle" data-order="2"></div>
-        <div class="circle" data-order="3"></div>
-        <div class="circle" data-order="4"></div>
-        <div class="circle" data-order="5"></div>
-        <div class="circle" data-order="6"></div>
-        <div class="circle" data-order="6"></div>
-        <div class="circle" data-order="5"></div>
-        <div class="circle" data-order="4"></div>
-        <div class="circle" data-order="3"></div>
-        <div class="circle" data-order="2"></div>
-        <div class="circle" data-order="1"></div>
-      </div>
-    </nav>
 
-    <section class="hero">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fauzi Eka Putra — Full-Stack Developer & Designer</title>
+  <meta name="description" content="Portfolio of Fauzi Eka Putra, Full-Stack Developer & UI/UX Designer specializing in building interactive, high-performance web applications." />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: {
+        preflight: false,
+      },
+      theme: {
+        extend: {
+          colors: {
+            accent1: '#e5d9f6',
+            accent2: '#ffd2f3',
+            accent3: '#fcdca6',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+
+  <!-- Glassmorphic Floating Header -->
+  <header class="navbar-wrapper">
+    <nav class="navbar-glass">
+      <a href="#" class="nav-brand">
+        <span>FAUZI EKA PUTRA</span> <span class="nav-brand-badge">DEV</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#sudoku" class="nav-link">Sudoku</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta-btn">Let's Talk ✦</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+
+      <!-- Floating Tech Badges -->
+      <div class="floating-badge fb-1"><span>⚡ React.js</span></div>
+      <div class="floating-badge fb-2"><span>✦ Node.js</span></div>
+      <div class="floating-badge fb-3"><span>◈ GSAP</span></div>
+      <div class="floating-badge fb-4"><span>⬡ Tailwind</span></div>
+
+      <div class="name">Fauzi Eka Putra</div>
+
+      <p class="hero-tagline">
+        Crafting responsive front-end interfaces and scalable back-end systems that balance clean modern aesthetics with high-performance code.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#projects" class="btn-primary">Explore Work ✦</a>
+        <a href="#contact" class="btn-secondary">Get In Touch 💬</a>
+      </div>
+
       <div class="shape">
         <div>✦ ✦ ✦</div>
         <div class="count" data-target="2025" style="font-size: 1rem">0</div>
         <div>
-          <a
-            href="https://www.linkedin.com/in/fauzi-eka-putra-086319286 "
-            target="_blank"
-            style="color: #000"
-            ><i class="fab fa-linkedin"></i
-          ></a>
+          <a href="https://www.linkedin.com/in/fauzi-eka-putra-086319286" target="_blank" style="color: #000" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
         </div>
         <div>
-          <a
-            href="https://github.com/Fauzzii"
-            target="_blank"
-            style="color: #000"
-            ><i class="fab fa-github"></i
-          ></a>
+          <a href="https://github.com/Fauzzii" target="_blank" style="color: #000" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
         </div>
         <div>
-          <a
-            href="https://www.instagram.com/fauzzii._/"
-            target="_blank"
-            style="color: #000"
-            ><i class="fab fa-instagram"></i
-          ></a>
+          <a href="https://www.instagram.com/fauzzii._/" target="_blank" style="color: #000" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
         </div>
         <div class="count" data-target="1905" style="font-size: 1rem">0</div>
         <div>✦ ✦ ✦</div>
       </div>
 
-      <div class="name">Fauzi Eka Putra</div>
-      <div class="wrapper"></div>
       <div class="hero-cards">
         <div class="card" id="hero-card-1">
           <div class="card-title">
@@ -79,7 +103,7 @@
         </div>
         <div class="card" id="hero-card-2">
           <div class="card-title">
-            <span> Design</span>
+            <span>Design</span>
             <span>02</span>
           </div>
           <div class="card-title">
@@ -98,77 +122,106 @@
           </div>
         </div>
       </div>
-      <div class="hero-circles">
-        <div class="circle" data-order="1"></div>
-        <div class="circle" data-order="2"></div>
-        <div class="circle" data-order="3"></div>
-        <div class="circle" data-order="4"></div>
-        <div class="circle" data-order="5"></div>
-        <div class="circle" data-order="6"></div>
-        <div class="circle" data-order="6"></div>
-        <div class="circle" data-order="5"></div>
-        <div class="circle" data-order="4"></div>
-        <div class="circle" data-order="3"></div>
-        <div class="circle" data-order="2"></div>
-        <div class="circle" data-order="1"></div>
-      </div>
     </section>
 
-    <section class="about">
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+      <div class="about-bg-grid"></div>
+
       <div class="left reveal-left">
-        <h1
-          class="reveal"
-          style="
-            font-size: 3vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 12vh;
-            flex-wrap: wrap;
-            flex-direction: row;
-          "
-        >
-          From crafting responsive front-end interfaces to developing robust
-          back-end systems, I enjoy bringing complete digital solutions to life.
-          I work with modern tools and frameworks to create applications that
-          are fast, secure, and user-focused.
+        <h1 class="reveal">
+          From crafting responsive front-end interfaces to developing robust back-end systems, I enjoy bringing complete digital solutions to life. I work with modern tools and frameworks to create applications that are fast, secure, and user-focused.
         </h1>
       </div>
 
       <div class="right reveal-right">
         <div class="container">
           <div class="card-swap">
-            <div class="gulir">
-              <!-- <h3>Card 1</h3> -->
-              <div class="video">
-                <video src="assets/3.mp4" autoplay muted loop></video>
+
+            <div class="gulir bg-accent1 border-2 border-black/10 text-black">
+              <div class="flex flex-col h-full justify-between p-6">
+                <div class="flex justify-between items-center border-b border-black/10 pb-4">
+                  <span class="font-mono text-[10px] md:text-xs tracking-widest text-black/60 font-semibold">01 / PHILOSOPHY</span>
+                  <span class="font-mono text-[10px] md:text-xs tracking-widest text-black/60 font-semibold">[ CORE ]</span>
+                </div>
+                <div class="my-auto py-2">
+                  <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-black leading-snug tracking-tight my-0">
+                    "Crafting digital experiences that balance clean aesthetics with robust, high-performance code."
+                  </h3>
+                </div>
+                <div class="flex justify-between items-center border-t border-black/10 pt-4">
+                  <span class="font-mono text-[9px] md:text-[10px] tracking-wider text-black/60 font-semibold">FAUZI EKA PUTRA</span>
+                  <span class="font-mono text-[9px] md:text-[10px] tracking-wider text-black/60 font-semibold">© 2026</span>
+                </div>
               </div>
             </div>
-            <div class="gulir">
-              <!-- <h3>Card 2</h3> -->
-              <div class="video">
-                <video src="assets/2.mp4" autoplay muted loop></video>
+
+            <div class="gulir bg-accent2 border-2 border-black/10 text-black">
+              <div class="flex flex-col h-full justify-between p-6">
+                <div class="flex justify-between items-center border-b border-black/10 pb-4">
+                  <span class="font-mono text-[10px] md:text-xs tracking-widest text-black/60 font-semibold">02 / SERVICES</span>
+                  <span class="font-mono text-[10px] md:text-xs tracking-widest text-black/60 font-semibold">[ WEB DEV ]</span>
+                </div>
+                <div class="my-auto py-2 flex flex-col gap-2">
+                  <p class="text-sm md:text-base font-semibold text-black/80 my-0 leading-relaxed">
+                    Transforming complex wireframes into production-ready frontends, and building scalable backends with RESTful APIs.
+                  </p>
+                  <div class="grid grid-cols-2 gap-2 mt-1">
+                    <div class="bg-black/5 rounded px-2.5 py-1.5 font-mono text-[10px] md:text-xs font-semibold text-black/75">✦ Web Development</div>
+                    <div class="bg-black/5 rounded px-2.5 py-1.5 font-mono text-[10px] md:text-xs font-semibold text-black/75">✦ Database Management</div>
+                    <div class="bg-black/5 rounded px-2.5 py-1.5 font-mono text-[10px] md:text-xs font-semibold text-black/75">✦ UI/UX Implementation</div>
+                    <div class="bg-black/5 rounded px-2.5 py-1.5 font-mono text-[10px] md:text-xs font-semibold text-black/75">✦ API Integrations</div>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-black/10 pt-4">
+                  <span class="font-mono text-[9px] md:text-[10px] tracking-wider text-black/60 font-semibold">CAPABILITIES</span>
+                  <span class="font-mono text-[9px] md:text-[10px] tracking-wider text-black/60 font-semibold">END-TO-END</span>
+                </div>
               </div>
             </div>
-            <div class="gulir">
-              <!-- <h3>Card 3</h3> -->
-              <div class="video">
-                <video src="assets/1.mp4" autoplay muted loop></video>
+
+            <div class="gulir bg-accent3 border-2 border-black/10 text-black">
+              <div class="flex flex-col h-full justify-between p-6">
+                <div class="flex justify-between items-center border-b border-black/10 pb-4">
+                  <span class="font-mono text-[10px] md:text-xs tracking-widest text-black/60 font-semibold">03 / TECH MATRIX</span>
+                  <span class="font-mono text-[10px] md:text-xs tracking-widest text-black/60 font-semibold">[ MODERN STACK ]</span>
+                </div>
+                <div class="my-auto py-2">
+                  <p class="text-sm md:text-base font-semibold text-black/80 mb-3 my-0 leading-relaxed">
+                    Leveraging robust frameworks and agile toolsets to deploy highly optimized user interfaces.
+                  </p>
+                  <div class="flex flex-wrap gap-1 md:gap-1.5">
+                    <span class="px-2 md:px-2.5 py-0.5 md:py-1 text-[10px] md:text-xs font-mono font-bold rounded bg-black text-[#fcdca6]">React.js</span>
+                    <span class="px-2 md:px-2.5 py-0.5 md:py-1 text-[10px] md:text-xs font-mono font-bold rounded bg-black text-[#fcdca6]">Vue.js</span>
+                    <span class="px-2 md:px-2.5 py-0.5 md:py-1 text-[10px] md:text-xs font-mono font-bold rounded bg-black text-[#fcdca6]">Node.js</span>
+                    <span class="px-2 md:px-2.5 py-0.5 md:py-1 text-[10px] md:text-xs font-mono font-bold rounded bg-black text-[#fcdca6]">MongoDB</span>
+                    <span class="px-2 md:px-2.5 py-0.5 md:py-1 text-[10px] md:text-xs font-mono font-bold rounded bg-black text-[#fcdca6]">PostgreSQL</span>
+                    <span class="px-2 md:px-2.5 py-0.5 md:py-1 text-[10px] md:text-xs font-mono font-bold rounded bg-black text-[#fcdca6]">Tailwind CSS</span>
+                    <span class="px-2 md:px-2.5 py-0.5 md:py-1 text-[10px] md:text-xs font-mono font-bold rounded bg-black text-[#fcdca6]">Figma</span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-black/10 pt-4">
+                  <span class="font-mono text-[9px] md:text-[10px] tracking-wider text-black/60 font-semibold">MODERN STACK</span>
+                  <span class="font-mono text-[9px] md:text-[10px] tracking-wider text-black/60 font-semibold">TOOLBOX</span>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
     </section>
-    <section class="services">
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
       <div class="services-header">
-        <h1 style="font-weight: 500;">
+        <h1 style="font-weight: 600;">
           Solutions I Build So You Can Focus on What Matters
         </h1>
       </div>
     </section>
 
+    <!-- FLIP CARDS SECTION -->
     <section class="cards">
       <div class="cards-container">
         <div class="card" id="card-1">
@@ -278,416 +331,488 @@
       </div>
     </section>
 
-      <div class="scroll-indicator">
-        <div class="scroll-progress"></div>
-    </div>
+    <!-- PROJECTS SECTION -->
+    <section id="projects" style="position:relative;background:#111;color:white;overflow:hidden;">
+      <div id="proj-pin-wrap" style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;">
 
-    <div class="project-container">
-        <!-- Floating decorative elements -->
-        <div class="floating-elements">
-            <div class="float-circle float-1"></div>
-            <div class="float-circle float-2"></div>
-            <div class="float-circle float-3"></div>
-            <div class="float-triangle float-4"></div>
-            <div class="float-triangle float-5"></div>
+        <div id="proj-label" style="position:absolute;left:2.5rem;top:50%;transform:translateY(-50%);z-index:10;pointer-events:none;">
+          <div style="writing-mode:vertical-lr;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);transform:rotate(180deg);">Featured Projects</div>
         </div>
 
-        <div class="projects-wrapper">
-            <div class="projects">
-                <!-- Project 1 -->
-                <section class="project" data-project="1">
-                    <div class="project-bg-pattern"></div>
-                    <div class="project-number">01</div>
-                    
-                    <div class="project-content">
-                        <div class="project-image">
-                            <div class="image-overlay"></div>
-                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="E-Commerce Platform">
-                            <div class="image-glow"></div>
-                        </div>
-                        
-                        <div class="project-details">
-                            <div class="project-category">Web Development</div>
-                            <h2 class="project-title">
-                                <span class="title-word">E-Commerce</span>
-                                <span class="title-word">Platform</span>
-                            </h2>
-                            <div class="title-line"></div>
-                            
-                            <p class="project-description">
-                                Platform e-commerce modern dengan fitur lengkap termasuk sistem pembayaran, 
-                                manajemen inventory, dan dashboard admin yang komprehensif. Dibangun dengan 
-                                fokus pada user experience dan performa yang optimal.
-                            </p>
-                            
-                            <div class="project-tech">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">Stripe</span>
-                                <span class="tech-tag">Tailwind CSS</span>
-                            </div>
-                            
-                            <div class="project-links">
-                                <a href="#" class="project-link primary">View Project</a>
-                                <a href="#" class="project-link secondary">Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- Project 2 -->
-                <section class="project" data-project="2">
-                    <div class="project-bg-pattern"></div>
-                    <div class="project-number">02</div>
-                    
-                    <div class="project-content">
-                        <div class="project-image">
-                            <div class="image-overlay"></div>
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80" alt="Task Management App">
-                            <div class="image-glow"></div>
-                        </div>
-                        
-                        <div class="project-details">
-                            <div class="project-category">Mobile App</div>
-                            <h2 class="project-title">
-                                <span class="title-word">Task</span>
-                                <span class="title-word">Management</span>
-                            </h2>
-                            <div class="title-line"></div>
-                            
-                            <p class="project-description">
-                                Aplikasi manajemen tugas yang intuitif dengan fitur kolaborasi tim, 
-                                tracking progress real-time, dan integrasi dengan berbagai tools produktivitas. 
-                                Mendukung metodologi Agile dan Kanban board.
-                            </p>
-                            
-                            <div class="project-tech">
-                                <span class="tech-tag">Vue.js</span>
-                                <span class="tech-tag">Express.js</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">Socket.io</span>
-                                <span class="tech-tag">SCSS</span>
-                            </div>
-                            
-                            <div class="project-links">
-                                <a href="#" class="project-link primary">View Project</a>
-                                <a href="#" class="project-link secondary">Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- Project 3 -->
-                <section class="project" data-project="3">
-                    <div class="project-bg-pattern"></div>
-                    <div class="project-number">03</div>
-                    
-                    <div class="project-content">
-                        <div class="project-image">
-                            <div class="image-overlay"></div>
-                            <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Weather Dashboard">
-                            <div class="image-glow"></div>
-                        </div>
-                        
-                        <div class="project-details">
-                            <div class="project-category">Data Visualization</div>
-                            <h2 class="project-title">
-                                <span class="title-word">Weather</span>
-                                <span class="title-word">Dashboard</span>
-                            </h2>
-                            <div class="title-line"></div>
-                            
-                            <p class="project-description">
-                                Dashboard cuaca interaktif dengan visualisasi data yang menarik, 
-                                prediksi cuaca 7 hari ke depan, dan notifikasi cuaca ekstrem. 
-                                Mengintegrasikan multiple weather APIs untuk akurasi data terbaik.
-                            </p>
-                            
-                            <div class="project-tech">
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Chart.js</span>
-                                <span class="tech-tag">Weather API</span>
-                                <span class="tech-tag">CSS Grid</span>
-                                <span class="tech-tag">PWA</span>
-                            </div>
-                            
-                            <div class="project-links">
-                                <a href="#" class="project-link primary">View Project</a>
-                                <a href="#" class="project-link secondary">Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+        <div id="proj-track" style="display:flex;gap:2rem;padding:0 8rem;will-change:transform;">
+
+          <div class="proj-card" style="flex:0 0 520px;background:#f9f4eb;border-radius:24px;border:2px solid rgba(0,0,0,0.12);padding:0;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+            <div style="position:relative;aspect-ratio:16/9;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80" alt="E-Commerce" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;" class="proj-img">
+              <div style="position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#111;color:var(--accent-3);padding:0.4rem 0.85rem;border-radius:999px;">01 / Web Dev</div>
             </div>
+            <div style="padding:1.75rem;">
+              <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:#111;margin-bottom:0.6rem;">E-Commerce Platform</h3>
+              <p style="font-size:0.92rem;color:rgba(0,0,0,0.75);font-weight:500;line-height:1.65;margin-bottom:1.25rem;">Full-featured shop with payment gateway, inventory management, and a slick admin dashboard.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">React</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Node.js</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">MongoDB</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Stripe</span>
+              </div>
+              <button type="button" onclick="openProjectModal(1)" style="display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#111;background:rgba(0,0,0,0.06);border:2px solid #111;padding:0.6rem 1.25rem;border-radius:999px;cursor:pointer;transition:all 0.25s ease;" class="proj-action-btn">View Details <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></button>
+            </div>
+          </div>
+
+          <div class="proj-card" style="flex:0 0 520px;background:var(--accent-2);border-radius:24px;border:2px solid rgba(0,0,0,0.12);padding:0;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+            <div style="position:relative;aspect-ratio:16/9;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=900&q=80" alt="Task Management" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;" class="proj-img">
+              <div style="position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#111;color:var(--accent-2);padding:0.4rem 0.85rem;border-radius:999px;">02 / Mobile App</div>
+            </div>
+            <div style="padding:1.75rem;">
+              <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:#111;margin-bottom:0.6rem;">Task Management App</h3>
+              <p style="font-size:0.92rem;color:rgba(0,0,0,0.75);font-weight:500;line-height:1.65;margin-bottom:1.25rem;">Collaborative task tracker with real-time updates, Kanban boards, and Agile workflow support.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Vue.js</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Socket.io</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">PostgreSQL</span>
+              </div>
+              <button type="button" onclick="openProjectModal(2)" style="display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#111;background:rgba(0,0,0,0.06);border:2px solid #111;padding:0.6rem 1.25rem;border-radius:999px;cursor:pointer;transition:all 0.25s ease;" class="proj-action-btn">View Details <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></button>
+            </div>
+          </div>
+
+          <div class="proj-card" style="flex:0 0 520px;background:var(--accent-3);border-radius:24px;border:2px solid rgba(0,0,0,0.12);padding:0;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+            <div style="position:relative;aspect-ratio:16/9;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1504608524841-42584120d693?w=900&q=80" alt="Weather Dashboard" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;" class="proj-img">
+              <div style="position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#111;color:var(--accent-3);padding:0.4rem 0.85rem;border-radius:999px;">03 / Data Viz</div>
+            </div>
+            <div style="padding:1.75rem;">
+              <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:#111;margin-bottom:0.6rem;">Weather Dashboard</h3>
+              <p style="font-size:0.92rem;color:rgba(0,0,0,0.75);font-weight:500;line-height:1.65;margin-bottom:1.25rem;">Live weather data visualization with 7-day forecast, animated maps, and multi-API integration.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">JavaScript</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Chart.js</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">PWA</span>
+              </div>
+              <button type="button" onclick="openProjectModal(3)" style="display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#111;background:rgba(0,0,0,0.06);border:2px solid #111;padding:0.6rem 1.25rem;border-radius:999px;cursor:pointer;transition:all 0.25s ease;" class="proj-action-btn">View Details <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></button>
+            </div>
+          </div>
+
+          <div class="proj-card" style="flex:0 0 520px;background:#e8f4e8;border-radius:24px;border:2px solid rgba(0,0,0,0.12);padding:0;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+            <div style="position:relative;aspect-ratio:16/9;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&q=80" alt="Blog CMS" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;" class="proj-img">
+              <div style="position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#111;color:#e8f4e8;padding:0.4rem 0.85rem;border-radius:999px;">04 / CMS</div>
+            </div>
+            <div style="padding:1.75rem;">
+              <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:#111;margin-bottom:0.6rem;">Blog & CMS Platform</h3>
+              <p style="font-size:0.92rem;color:rgba(0,0,0,0.75);font-weight:500;line-height:1.65;margin-bottom:1.25rem;">Custom CMS with rich-text editor, tag system, SEO tools, and role-based author management.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Next.js</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Sanity.io</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">TypeScript</span>
+              </div>
+              <button type="button" onclick="openProjectModal(4)" style="display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#111;background:rgba(0,0,0,0.06);border:2px solid #111;padding:0.6rem 1.25rem;border-radius:999px;cursor:pointer;transition:all 0.25s ease;" class="proj-action-btn">View Details <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></button>
+            </div>
+          </div>
+
+          <div class="proj-card" style="flex:0 0 520px;background:#ffe4e4;border-radius:24px;border:2px solid rgba(0,0,0,0.12);padding:0;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+            <div style="position:relative;aspect-ratio:16/9;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&q=80" alt="Social Dashboard" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;" class="proj-img">
+              <div style="position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#111;color:#ffe4e4;padding:0.4rem 0.85rem;border-radius:999px;">05 / Analytics</div>
+            </div>
+            <div style="padding:1.75rem;">
+              <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:#111;margin-bottom:0.6rem;">Social Media Analytics</h3>
+              <p style="font-size:0.92rem;color:rgba(0,0,0,0.75);font-weight:500;line-height:1.65;margin-bottom:1.25rem;">Unified dashboard tracking engagement, reach, and growth across multiple social platforms in real time.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">React</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">D3.js</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">GraphQL</span>
+              </div>
+              <button type="button" onclick="openProjectModal(5)" style="display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#111;background:rgba(0,0,0,0.06);border:2px solid #111;padding:0.6rem 1.25rem;border-radius:999px;cursor:pointer;transition:all 0.25s ease;" class="proj-action-btn">View Details <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></button>
+            </div>
+          </div>
+
+          <div class="proj-card" style="flex:0 0 520px;background:#e4eeff;border-radius:24px;border:2px solid rgba(0,0,0,0.12);padding:0;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+            <div style="position:relative;aspect-ratio:16/9;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80" alt="Real Estate" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;" class="proj-img">
+              <div style="position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#111;color:#e4eeff;padding:0.4rem 0.85rem;border-radius:999px;">06 / Full Stack</div>
+            </div>
+            <div style="padding:1.75rem;">
+              <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:#111;margin-bottom:0.6rem;">Real Estate Listing App</h3>
+              <p style="font-size:0.92rem;color:rgba(0,0,0,0.75);font-weight:500;line-height:1.65;margin-bottom:1.25rem;">Property marketplace with map-based search, virtual tours, and mortgage calculator integration.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">React</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Node.js</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Mapbox</span>
+              </div>
+              <button type="button" onclick="openProjectModal(6)" style="display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#111;background:rgba(0,0,0,0.06);border:2px solid #111;padding:0.6rem 1.25rem;border-radius:999px;cursor:pointer;transition:all 0.25s ease;" class="proj-action-btn">View Details <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></button>
+            </div>
+          </div>
+
+          <div class="proj-card" style="flex:0 0 520px;background:#f0e8ff;border-radius:24px;border:2px solid rgba(0,0,0,0.12);padding:0;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+            <div style="position:relative;aspect-ratio:16/9;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80" alt="Fitness Tracker" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;" class="proj-img">
+              <div style="position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#111;color:#f0e8ff;padding:0.4rem 0.85rem;border-radius:999px;">07 / Health Tech</div>
+            </div>
+            <div style="padding:1.75rem;">
+              <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:#111;margin-bottom:0.6rem;">Fitness Tracker App</h3>
+              <p style="font-size:0.92rem;color:rgba(0,0,0,0.75);font-weight:500;line-height:1.65;margin-bottom:1.25rem;">Workout log with progress charts, body metrics tracking, and personalized coaching suggestions.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">React Native</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Firebase</span>
+              </div>
+              <button type="button" onclick="openProjectModal(7)" style="display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#111;background:rgba(0,0,0,0.06);border:2px solid #111;padding:0.6rem 1.25rem;border-radius:999px;cursor:pointer;transition:all 0.25s ease;" class="proj-action-btn">View Details <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></button>
+            </div>
+          </div>
+
+          <div class="proj-card" style="flex:0 0 520px;background:#fff8e4;border-radius:24px;border:2px solid rgba(0,0,0,0.12);padding:0;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.25);">
+            <div style="position:relative;aspect-ratio:16/9;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&q=80" alt="AI Chat" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;" class="proj-img">
+              <div style="position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#111;color:#fff8e4;padding:0.4rem 0.85rem;border-radius:999px;">08 / AI / ML</div>
+            </div>
+            <div style="padding:1.75rem;">
+              <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:#111;margin-bottom:0.6rem;">AI Chat Interface</h3>
+              <p style="font-size:0.92rem;color:rgba(0,0,0,0.75);font-weight:500;line-height:1.65;margin-bottom:1.25rem;">Chat UI for LLM models with conversation history, streaming response, and markdown rendering.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem;">
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">React</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">OpenAI API</span>
+                <span style="font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:999px;background:rgba(0,0,0,0.06);color:#111;border:1.5px solid rgba(0,0,0,0.12);">Python</span>
+              </div>
+              <button type="button" onclick="openProjectModal(8)" style="display:inline-flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#111;background:rgba(0,0,0,0.06);border:2px solid #111;padding:0.6rem 1.25rem;border-radius:999px;cursor:pointer;transition:all 0.25s ease;" class="proj-action-btn">View Details <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></button>
+            </div>
+          </div>
+
         </div>
+
+        <div id="proj-scroll-hint" style="position:absolute;bottom:2.5rem;right:3rem;display:flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);">
+          <span id="proj-counter" style="color:rgba(255,255,255,0.6);">01</span> / 08
+          <div style="width:60px;height:1px;background:rgba(255,255,255,0.15);position:relative;overflow:hidden;">
+            <div id="proj-progress-bar" style="position:absolute;left:0;top:0;height:100%;background:white;width:12%;transition:width 0.15s ease;"></div>
+          </div>
+          scroll →
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" style="position:relative;background:#f9f4eb;color:#111;padding:9rem 2rem;overflow:hidden;">
+      <div class="plx-deco" data-speed="0.15" style="position:absolute;top:6%;left:3%;font-size:4rem;opacity:0.18;pointer-events:none;user-select:none;animation:floatA 6s ease-in-out infinite;">✦</div>
+      <div class="plx-deco" data-speed="0.25" style="position:absolute;top:20%;right:5%;width:90px;height:90px;background:var(--accent-2);border-radius:50%;border:3px solid rgba(0,0,0,0.07);pointer-events:none;animation:floatB 8s ease-in-out infinite;"></div>
+      <div class="plx-deco" data-speed="0.1" style="position:absolute;bottom:12%;left:7%;font-size:3rem;opacity:0.15;pointer-events:none;user-select:none;animation:floatA 9s ease-in-out infinite 1s;">◈</div>
+      <div class="plx-deco" data-speed="0.2" style="position:absolute;top:50%;right:3%;width:60px;height:60px;background:var(--accent-3);border-radius:12px;transform:rotate(18deg);border:3px solid rgba(0,0,0,0.07);pointer-events:none;animation:floatB 7s ease-in-out infinite 0.5s;"></div>
+
+      <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;">
+
+        <div class="exp-header" style="margin-bottom:7rem;">
+          <p class="exp-tag" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.4);margin-bottom:1rem;opacity:0;">✦ Career Journey ✦</p>
+          <h2 class="exp-title" style="font-size:clamp(3rem,7vw,6rem);font-weight:800;letter-spacing:-0.04em;line-height:0.95;color:#111;opacity:0;">
+            Where I've<br/><span style="color:rgba(0,0,0,0.2);font-weight:300;font-style:italic;">been.</span>
+          </h2>
+          <p class="exp-subtitle" style="font-size:1.05rem;color:rgba(0,0,0,0.5);margin-top:1.5rem;max-width:420px;line-height:1.65;opacity:0;">A few stops along the way — each one taught me something new.</p>
+        </div>
+
+        <div class="exp-timeline" style="position:relative;display:flex;flex-direction:column;gap:0;">
+          <div class="exp-line" style="position:absolute;left:50%;top:0;bottom:0;width:1px;border-left:2px dashed rgba(0,0,0,0.15);transform:translateX(-50%);transform-origin:top;"></div>
+
+          <div class="exp-item" style="display:grid;grid-template-columns:1fr 100px 1fr;align-items:center;margin-bottom:6rem;opacity:0;" data-exp="1">
+            <div class="exp-text-left" style="padding-right:3.5rem;text-align:right;">
+              <span style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.4);">2024 — Present</span>
+              <h3 style="font-size:1.75rem;font-weight:800;color:#111;margin-top:0.5rem;letter-spacing:-0.03em;">Full-Stack Developer</h3>
+              <p style="color:rgba(0,0,0,0.45);font-size:0.85rem;margin-top:0.3rem;font-family:'DM Mono',monospace;">Tech Solutions / Freelance</p>
+            </div>
+            <div style="display:flex;justify-content:center;z-index:2;">
+              <div class="exp-dot" style="width:24px;height:24px;border-radius:50%;background:var(--accent-1);border:3px solid #111;box-shadow:4px 4px 0 #111;"></div>
+            </div>
+            <div class="exp-card" style="padding-left:3.5rem;">
+              <div style="background:white;border:2px solid rgba(0,0,0,0.1);border-radius:16px;padding:1.75rem;box-shadow:4px 4px 0 rgba(0,0,0,0.06);transition:transform 0.3s ease,box-shadow 0.3s ease;">
+                <p style="color:rgba(0,0,0,0.65);font-size:0.95rem;line-height:1.7;margin-bottom:1rem;">Building scalable web apps, REST APIs, and micro-frontend modules — from zero to production.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                  <span style="font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:999px;background:var(--accent-1);border:1.5px solid rgba(0,0,0,0.1);">React</span>
+                  <span style="font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:999px;background:var(--accent-1);border:1.5px solid rgba(0,0,0,0.1);">Node.js</span>
+                  <span style="font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:999px;background:var(--accent-1);border:1.5px solid rgba(0,0,0,0.1);">PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-item" style="display:grid;grid-template-columns:1fr 100px 1fr;align-items:center;margin-bottom:6rem;opacity:0;" data-exp="2">
+            <div class="exp-card" style="padding-right:3.5rem;">
+              <div style="background:white;border:2px solid rgba(0,0,0,0.1);border-radius:16px;padding:1.75rem;box-shadow:4px 4px 0 rgba(0,0,0,0.06);transition:transform 0.3s ease,box-shadow 0.3s ease;">
+                <p style="color:rgba(0,0,0,0.65);font-size:0.95rem;line-height:1.7;margin-bottom:1rem;">Crafting pixel-perfect, interaction-rich UIs with React, GSAP, and modern CSS that delight users.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                  <span style="font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:999px;background:var(--accent-2);border:1.5px solid rgba(0,0,0,0.1);">GSAP</span>
+                  <span style="font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:999px;background:var(--accent-2);border:1.5px solid rgba(0,0,0,0.1);">Tailwind</span>
+                  <span style="font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:999px;background:var(--accent-2);border:1.5px solid rgba(0,0,0,0.1);">Figma</span>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:center;z-index:2;">
+              <div class="exp-dot" style="width:24px;height:24px;border-radius:50%;background:var(--accent-2);border:3px solid #111;box-shadow:4px 4px 0 #111;"></div>
+            </div>
+            <div class="exp-text-right" style="padding-left:3.5rem;">
+              <span style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.4);">2023 — 2024</span>
+              <h3 style="font-size:1.75rem;font-weight:800;color:#111;margin-top:0.5rem;letter-spacing:-0.03em;">Front-End Engineer</h3>
+              <p style="color:rgba(0,0,0,0.45);font-size:0.85rem;margin-top:0.3rem;font-family:'DM Mono',monospace;">Digital Studio</p>
+            </div>
+          </div>
+
+          <div class="exp-item" style="display:grid;grid-template-columns:1fr 100px 1fr;align-items:center;opacity:0;" data-exp="3">
+            <div class="exp-text-left" style="padding-right:3.5rem;text-align:right;">
+              <span style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.4);">2022 — 2023</span>
+              <h3 style="font-size:1.75rem;font-weight:800;color:#111;margin-top:0.5rem;letter-spacing:-0.03em;">UI/UX Designer</h3>
+              <p style="color:rgba(0,0,0,0.45);font-size:0.85rem;margin-top:0.3rem;font-family:'DM Mono',monospace;">Creative Agency</p>
+            </div>
+            <div style="display:flex;justify-content:center;z-index:2;">
+              <div class="exp-dot" style="width:24px;height:24px;border-radius:50%;background:var(--accent-3);border:3px solid #111;box-shadow:4px 4px 0 #111;"></div>
+            </div>
+            <div class="exp-card" style="padding-left:3.5rem;">
+              <div style="background:white;border:2px solid rgba(0,0,0,0.1);border-radius:16px;padding:1.75rem;box-shadow:4px 4px 0 rgba(0,0,0,0.06);transition:transform 0.3s ease,box-shadow 0.3s ease;">
+                <p style="color:rgba(0,0,0,0.65);font-size:0.95rem;line-height:1.7;margin-bottom:1rem;">Designing user flows and high-fidelity Figma prototypes — then building them into real products myself.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                  <span style="font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:999px;background:var(--accent-3);border:1.5px solid rgba(0,0,0,0.1);">Figma</span>
+                  <span style="font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:999px;background:var(--accent-3);border:1.5px solid rgba(0,0,0,0.1);">UI/UX</span>
+                  <span style="font-family:'DM Mono',monospace;font-size:0.6rem;padding:0.25rem 0.65rem;border-radius:999px;background:var(--accent-3);border:1.5px solid rgba(0,0,0,0.1);">Prototyping</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section id="stats" style="position:relative;background:var(--light);color:var(--dark);padding:7rem 2rem;overflow:hidden;">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(8rem,20vw,18rem);font-weight:800;color:rgba(0,0,0,0.035);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-0.04em;font-family:'DM Sans',sans-serif;">NUMBERS</div>
+
+      <div class="stats-blob" style="position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:var(--accent-1);border-radius:50%;opacity:0.5;filter:blur(60px);pointer-events:none;"></div>
+      <div class="stats-blob" style="position:absolute;bottom:-40px;left:-40px;width:220px;height:220px;background:var(--accent-2);border-radius:50%;opacity:0.4;filter:blur(50px);pointer-events:none;"></div>
+
+      <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;">
+
+        <div class="stats-header" style="text-align:center;margin-bottom:5rem;opacity:0;">
+          <div style="display:inline-block;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.45);background:rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.1);padding:0.5rem 1.25rem;border-radius:999px;margin-bottom:1.5rem;">
+            ✦ By The Numbers ✦
+          </div>
+          <h2 style="font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;letter-spacing:-0.03em;line-height:1.05;">
+            A lot has happened in<br/><span style="position:relative;display:inline-block;">a short time.<span style="position:absolute;bottom:-4px;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent-2),var(--accent-3));border-radius:2px;"></span></span>
+          </h2>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:900px;margin:0 auto;" class="stats-grid">
+
+          <div class="stat-card" data-val="15" style="background:var(--accent-1);border:2px solid rgba(0,0,0,0.08);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;opacity:0;cursor:default;">
+            <div style="font-size:clamp(3.5rem,8vw,5rem);font-weight:800;letter-spacing:-0.04em;line-height:1;font-family:'DM Sans',sans-serif;" class="stat-num">0</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(0,0,0,0.55);margin-top:0.75rem;">Projects Completed</div>
+            <div style="position:absolute;bottom:-20px;right:-20px;font-size:5rem;opacity:0.08;pointer-events:none;">✦</div>
+          </div>
+
+          <div class="stat-card" data-val="3" style="background:var(--accent-2);border:2px solid rgba(0,0,0,0.08);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;opacity:0;cursor:default;">
+            <div style="font-size:clamp(3.5rem,8vw,5rem);font-weight:800;letter-spacing:-0.04em;line-height:1;font-family:'DM Sans',sans-serif;" class="stat-num">0</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(0,0,0,0.55);margin-top:0.75rem;">Years of Experience</div>
+            <div style="position:absolute;bottom:-20px;right:-20px;font-size:5rem;opacity:0.08;pointer-events:none;">◈</div>
+          </div>
+
+          <div class="stat-card" data-val="8" style="background:var(--accent-3);border:2px solid rgba(0,0,0,0.08);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;opacity:0;cursor:default;">
+            <div style="font-size:clamp(3.5rem,8vw,5rem);font-weight:800;letter-spacing:-0.04em;line-height:1;font-family:'DM Sans',sans-serif;" class="stat-num">0</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(0,0,0,0.55);margin-top:0.75rem;">Tech Stacks Mastered</div>
+            <div style="position:absolute;bottom:-20px;right:-20px;font-size:5rem;opacity:0.08;pointer-events:none;">⬡</div>
+          </div>
+
+          <div class="stat-card" data-val="100" style="background:#f9f4eb;border:2px solid rgba(0,0,0,0.08);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;opacity:0;cursor:default;">
+            <div style="font-size:clamp(3.5rem,8vw,5rem);font-weight:800;letter-spacing:-0.04em;line-height:1;font-family:'DM Sans',sans-serif;" class="stat-num">0<span style="font-size:0.55em;vertical-align:super;">%</span></div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(0,0,0,0.55);margin-top:0.75rem;">Passion for What I Do</div>
+            <div style="position:absolute;bottom:-20px;right:-20px;font-size:5rem;opacity:0.08;pointer-events:none;">♥</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SUDOKU GAME SECTION -->
+    <section id="sudoku" style="position:relative;background:#111;color:#111;padding:8rem 2rem;overflow:hidden;">
+      <div style="position:absolute;top:-80px;right:-80px;width:350px;height:350px;background:var(--accent-1);border-radius:50%;opacity:0.06;filter:blur(80px);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:var(--accent-2);border-radius:50%;opacity:0.07;filter:blur(70px);pointer-events:none;"></div>
+
+      <div style="max-width:900px;margin:0 auto;position:relative;z-index:1;">
+
+        <div class="sdk-header" style="text-align:center;margin-bottom:4rem;opacity:0;">
+          <p style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1rem;">✦ take a break ✦</p>
+          <h2 style="font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-0.04em;line-height:1;color:white;">Play Sudoku.</h2>
+          <p style="font-size:1rem;color:rgba(255,255,255,0.45);margin-top:1rem;font-weight:400;">Yeah, it's right here on my portfolio. Because why not.</p>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;" class="sdk-controls">
+          <div style="display:flex;gap:0.6rem;">
+            <button onclick="setSudokuDifficulty('easy')" id="sdk-btn-easy" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.1rem;border-radius:999px;background:var(--accent-1);border:2px solid rgba(0,0,0,0.15);cursor:pointer;font-weight:600;transition:all 0.2s;">Easy</button>
+            <button onclick="setSudokuDifficulty('medium')" id="sdk-btn-medium" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.1rem;border-radius:999px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.1);cursor:pointer;color:white;font-weight:600;transition:all 0.2s;">Medium</button>
+            <button onclick="setSudokuDifficulty('hard')" id="sdk-btn-hard" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.1rem;border-radius:999px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.1);cursor:pointer;color:white;font-weight:600;transition:all 0.2s;">Hard</button>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div style="font-family:'DM Mono',monospace;font-size:1rem;color:rgba(255,255,255,0.7);" id="sdk-timer">00:00</div>
+            <button onclick="newSudokuGame()" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.3rem;border-radius:999px;background:white;border:none;cursor:pointer;font-weight:700;transition:all 0.25s;" id="sdk-new-btn">New Game</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;" class="sdk-game">
+
+          <div id="sudoku-grid" style="display:grid;grid-template-columns:repeat(9,1fr);gap:0;border:3px solid rgba(255,255,255,0.5);border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.05);"></div>
+
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;" id="sdk-numpad"></div>
+            <button onclick="sudokuErase()" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem;border-radius:10px;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.1);cursor:pointer;color:white;transition:all 0.2s;margin-top:0.25rem;">⌫ Erase</button>
+            <button onclick="sudokuHint()" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem;border-radius:10px;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.1);cursor:pointer;color:white;transition:all 0.2s;">✦ Hint</button>
+            <div id="sdk-hints-left" style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.35);text-align:center;">3 hints left</div>
+          </div>
+
+        </div>
+
+        <div id="sdk-win-msg" style="display:none;text-align:center;margin-top:2rem;padding:1.5rem;background:var(--accent-1);border-radius:16px;border:2px solid rgba(0,0,0,0.1);">
+          <p style="font-size:1.3rem;font-weight:800;letter-spacing:-0.02em;">🎉 Puzzle solved!</p>
+          <p style="font-family:'DM Mono',monospace;font-size:0.75rem;color:rgba(0,0,0,0.55);margin-top:0.5rem;" id="sdk-win-time"></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" style="position:relative;background:#050507;color:white;padding:8rem 2rem 5rem;overflow:hidden;min-height:100vh;display:flex;align-items:center;">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;"></div>
+      <div id="contact-glow" style="position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,0.07),transparent 70%);transform:translate(-50%,-50%);pointer-events:none;left:50%;top:50%;transition:left 0.3s,top 0.3s;"></div>
+
+      <div class="ctc-ring" style="position:absolute;top:10%;right:-80px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(34,211,238,0.08);animation:ctcRotate 20s linear infinite;pointer-events:none;"></div>
+      <div class="ctc-ring" style="position:absolute;bottom:5%;left:-100px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(244,114,182,0.08);animation:ctcRotate 28s linear infinite reverse;pointer-events:none;"></div>
+
+      <div style="max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;">
+
+        <div class="ctc-eyebrow" style="text-align:center;margin-bottom:1.5rem;opacity:0;">
+          <span style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);">— say hello —</span>
+        </div>
+
+        <div class="ctc-heading" style="text-align:center;margin-bottom:5rem;opacity:0;overflow:hidden;">
+          <h2 style="font-size:clamp(3rem,9vw,7.5rem);font-weight:800;letter-spacing:-0.04em;line-height:0.9;margin:0;">
+            Let's make<br/>
+            <span style="display:inline-block;position:relative;">
+              <span style="background:linear-gradient(135deg,#22d3ee 0%,#f472b6 50%,#facc15 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">something</span>
+            </span><br/>
+            <span style="color:rgba(255,255,255,0.2);font-style:italic;font-weight:300;">cool together.</span>
+          </h2>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;" class="ctc-grid">
+
+          <div class="ctc-left" style="opacity:0;">
+            <p style="font-size:1.15rem;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:2.5rem;">
+              Open to freelance gigs, full-time roles, and random creative collabs. If you've got an idea, I'm probably already excited about it.
+            </p>
+
+            <a href="mailto:fauziekaputra704@gmail.com" onclick="copyEmailToClipboard('fauziekaputra704@gmail.com', event)" id="ctc-email-btn" style="display:inline-flex;align-items:center;gap:0.75rem;font-family:'DM Mono',monospace;font-size:0.85rem;color:white;border:1px solid rgba(255,255,255,0.15);padding:1rem 1.75rem;border-radius:999px;text-decoration:none;transition:all 0.35s ease;margin-bottom:2.5rem;position:relative;overflow:hidden;">
+              <i class="fas fa-envelope"></i>
+              fauziekaputra704@gmail.com
+              <span style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(34,211,238,0.12),rgba(244,114,182,0.12));opacity:0;transition:opacity 0.3s;" class="btn-glow-overlay"></span>
+            </a>
+
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+              <a href="https://github.com/Fauzzii" target="_blank" class="ctc-social" style="display:flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;padding:0.65rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.08);transition:all 0.3s ease;">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/fauzi-eka-putra-086319286" target="_blank" class="ctc-social" style="display:flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;padding:0.65rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.08);transition:all 0.3s ease;">
+                <i class="fab fa-linkedin-in"></i> LinkedIn
+              </a>
+              <a href="https://www.instagram.com/fauzzii._/" target="_blank" class="ctc-social" style="display:flex;align-items:center;gap:0.6rem;font-family:'DM Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.5);text-decoration:none;padding:0.65rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,0.08);transition:all 0.3s ease;">
+                <i class="fab fa-instagram"></i> Instagram
+              </a>
+            </div>
+          </div>
+
+          <div class="ctc-right" style="opacity:0;">
+            <form id="contact-form" style="display:flex;flex-direction:column;gap:1.25rem;" onsubmit="handleContactSubmit(event)">
+
+              <div class="ctc-field" style="position:relative;">
+                <input type="text" id="ctc-name" placeholder=" " required
+                  style="width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.1rem 1.25rem;color:white;font-size:0.95rem;outline:none;transition:all 0.3s;font-family:'DM Sans',sans-serif;box-sizing:border-box;" />
+                <label for="ctc-name" style="position:absolute;left:1.25rem;top:1.1rem;color:rgba(255,255,255,0.3);font-size:0.9rem;pointer-events:none;transition:all 0.25s;font-family:'DM Mono',monospace;font-size:0.75rem;">Your Name</label>
+              </div>
+
+              <div class="ctc-field" style="position:relative;">
+                <input type="email" id="ctc-email" placeholder=" " required
+                  style="width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.1rem 1.25rem;color:white;font-size:0.95rem;outline:none;transition:all 0.3s;font-family:'DM Sans',sans-serif;box-sizing:border-box;" />
+                <label for="ctc-email" style="position:absolute;left:1.25rem;top:1.1rem;color:rgba(255,255,255,0.3);font-size:0.9rem;pointer-events:none;transition:all 0.25s;font-family:'DM Mono',monospace;font-size:0.75rem;">Email Address</label>
+              </div>
+
+              <div class="ctc-field" style="position:relative;">
+                <textarea id="ctc-msg" rows="4" placeholder=" " required
+                  style="width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.1rem 1.25rem;color:white;font-size:0.95rem;outline:none;transition:all 0.3s;resize:none;font-family:'DM Sans',sans-serif;box-sizing:border-box;"></textarea>
+                <label for="ctc-msg" style="position:absolute;left:1.25rem;top:1.1rem;color:rgba(255,255,255,0.3);font-size:0.9rem;pointer-events:none;transition:all 0.25s;font-family:'DM Mono',monospace;font-size:0.75rem;">What's on your mind?</label>
+              </div>
+
+              <button type="submit" id="ctc-submit-btn"
+                style="display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:1.1rem 2rem;background:linear-gradient(135deg,#22d3ee,#f472b6);border:none;border-radius:12px;color:black;font-weight:700;font-size:0.9rem;font-family:'DM Mono',monospace;letter-spacing:0.05em;cursor:pointer;transition:all 0.35s ease;position:relative;overflow:hidden;">
+                <i class="fas fa-paper-plane"></i>
+                SEND IT
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="ctc-footer" style="border-top:1px solid rgba(255,255,255,0.07);margin-top:6rem;padding-top:2rem;display:flex;justify-content:space-between;align-items:center;opacity:0;">
+          <p style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.25);letter-spacing:0.1em;">© 2026 FAUZI EKA PUTRA</p>
+          <p style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.25);letter-spacing:0.1em;">CRAFTED WITH CODE & CAFFEINE ✦</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Modal Preview -->
+  <div id="proj-modal" style="position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:2rem;opacity:0;">
+    <div id="proj-modal-card" style="background:#f9f4eb;color:#111;max-width:700px;width:100%;border-radius:24px;border:3px solid #111;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,0.5);transform:scale(0.9);position:relative;">
+      <button type="button" onclick="closeProjectModal()" style="position:absolute;top:1rem;right:1rem;z-index:10;width:36px;height:36px;border-radius:50%;background:#111;color:white;border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;">✕</button>
+      <div style="aspect-ratio:16/9;overflow:hidden;position:relative;">
+        <img id="modal-img" src="" alt="Project Preview" style="width:100%;height:100%;object-fit:cover;">
+        <div id="modal-tag" style="position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#111;color:var(--accent-1);padding:0.4rem 0.85rem;border-radius:999px;">Category</div>
+      </div>
+      <div style="padding:2rem;">
+        <h2 id="modal-title" style="font-size:2rem;font-weight:800;letter-spacing:-0.03em;color:#111;margin-bottom:0.5rem;">Project Title</h2>
+        <p id="modal-desc" style="font-size:0.95rem;color:rgba(0,0,0,0.75);font-weight:500;line-height:1.65;margin-bottom:1.5rem;">Project detailed description goes here.</p>
+        <div id="modal-techs" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;"></div>
+        <div style="display:flex;gap:1rem;">
+          <button type="button" onclick="closeProjectModal()" style="font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:0.75rem 1.5rem;border-radius:999px;background:#111;color:white;border:none;cursor:pointer;">Close Preview</button>
+        </div>
+      </div>
     </div>
+  </div>
 
+  <!-- Scripts -->
+  <script src="js/card.js"></script>
+  <script src="js/name.js"></script>
+  <script src="js/count.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/slide-card.js"></script>
 
-    <script src="js/card.js"></script>
-    <script src="js/circle.js"></script>
-    <script src="js/name.js"></script>
-    <script src="js/count.js"></script>
-    <script src="js/about.js"></script>
-    <script src="js/slide-card.js"></script>
-    <script src="js/circle-top.js"></script>
-    <script>
-        gsap.registerPlugin(ScrollTrigger)
+  <script src="js/animations/cursor.js"></script>
+  <script src="js/animations/nav.js"></script>
+  <script src="js/animations/projects.js"></script>
+  <script src="js/animations/experience.js"></script>
+  <script src="js/animations/contact.js"></script>
 
-// Custom cursor
-const cursor = { x: 0, y: 0 }
-const mouse = { x: 0, y: 0 }
+  <script src="js/sudoku.js"></script>
 
-document.addEventListener("mousemove", (e) => {
-  mouse.x = e.clientX
-  mouse.y = e.clientY
-})
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
 
-gsap.to(cursor, {
-  duration: 0.3,
-  repeat: -1,
-  onRepeat: () => {
-    gsap.set("body::before", {
-      css: {
-        left: mouse.x - 10,
-        top: mouse.y - 10,
-      },
-    })
-  },
-})
+    window.addEventListener('load', () => {
+      gsap.from('body', { opacity: 0, duration: 0.8, ease: 'power2.out' });
+    });
 
-// Initialize animations when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  initializeAnimations()
-})
+    window.addEventListener('resize', () => ScrollTrigger.refresh());
 
-function initializeAnimations() {
-  // Get elements
-  const projectsContainer = document.querySelector(".projects")
-  const projects = document.querySelectorAll(".project")
-  const scrollProgress = document.querySelector(".scroll-progress")
-  const floatingElements = document.querySelectorAll(".float-circle, .float-triangle")
+    document.addEventListener('DOMContentLoaded', () => {
+      initProjectsScroll();
+      initExperienceAnimations();
+      initStatsAnimations();
+      initSudokuSectionAnimation();
+      initContactAnimations();
+      ScrollTrigger.refresh();
+    });
+  </script>
 
-  // Set initial states
-  gsap.set(".title-word", { y: "100%" })
-  gsap.set(".title-line", { scaleX: 0, transformOrigin: "left" })
-  gsap.set(".project-description", { y: 30, opacity: 0 })
-  gsap.set(".tech-tag", { y: 20, opacity: 0 })
-  gsap.set(".project-link", { y: 20, opacity: 0 })
-  gsap.set(".stat", { y: 20, opacity: 0 })
-
-  // Create horizontal scroll animation
-  const horizontalScroll = gsap.to(projectsContainer, {
-    x: () => -(projectsContainer.scrollWidth - window.innerWidth),
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".project-container",
-      pin: true,
-      scrub: 1,
-      end: () => "+=" + (projectsContainer.scrollWidth - window.innerWidth),
-      onUpdate: (self) => {
-        // Update scroll progress
-        gsap.to(scrollProgress, {
-          width: self.progress * 100 + "%",
-          duration: 0.1,
-        })
-      },
-    },
-  })
-
-  // Animate floating elements
-  floatingElements.forEach((element, index) => {
-    gsap.to(element, {
-      y: "random(-100, 100)",
-      x: "random(-50, 50)",
-      rotation: "random(-180, 180)",
-      duration: "random(10, 20)",
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: index * 0.5,
-    })
-
-    gsap.to(element, {
-      opacity: "random(0.05, 0.2)",
-      duration: "random(3, 6)",
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    })
-  })
-
-  // Animate each project
-  projects.forEach((project, index) => {
-    const titleWords = project.querySelectorAll(".title-word")
-    const titleLine = project.querySelector(".title-line")
-    const description = project.querySelector(".project-description")
-    const techTags = project.querySelectorAll(".tech-tag")
-    const projectLinks = project.querySelectorAll(".project-link")
-    const stats = project.querySelectorAll(".stat")
-    const projectImage = project.querySelector(".project-image")
-    const projectNumber = project.querySelector(".project-number")
-
-    // Create timeline for each project
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: project,
-        containerAnimation: horizontalScroll,
-        start: "left 80%",
-        end: "right 20%",
-        scrub: 1,
-        onEnter: () => project.classList.add("animate-in"),
-        onLeave: () => project.classList.remove("animate-in"),
-      },
-    })
-
-    // Animate project elements
-    tl.to(titleWords, {
-      y: 0,
-      duration: 1,
-      stagger: 0.1,
-      ease: "back.out(1.7)",
-    })
-      .to(
-        titleLine,
-        {
-          scaleX: 1,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.5",
-      )
-      .to(
-        description,
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.3",
-      )
-      .to(
-        stats,
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: "back.out(1.7)",
-        },
-        "-=0.4",
-      )
-      .to(
-        techTags,
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.05,
-          ease: "back.out(1.7)",
-        },
-        "-=0.3",
-      )
-      .to(
-        projectLinks,
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: "back.out(1.7)",
-        },
-        "-=0.2",
-      )
-
-    // Parallax effect for project image
-    gsap.to(projectImage, {
-      y: -50,
-      scrollTrigger: {
-        trigger: project,
-        containerAnimation: horizontalScroll,
-        start: "left right",
-        end: "right left",
-        scrub: 1,
-      },
-    })
-
-    // Animate project number
-    gsap.fromTo(
-      projectNumber,
-      {
-        opacity: 0.05,
-        scale: 0.8,
-      },
-      {
-        opacity: 0.1,
-        scale: 1,
-        scrollTrigger: {
-          trigger: project,
-          containerAnimation: horizontalScroll,
-          start: "left 70%",
-          end: "right 30%",
-          scrub: 1,
-        },
-      },
-    )
-
-    // Add hover effects
-    project.addEventListener("mouseenter", () => {
-      gsap.to(projectImage.querySelector("img"), {
-        scale: 1.1,
-        duration: 0.6,
-        ease: "power2.out",
-      })
-
-      gsap.to(techTags, {
-        y: -5,
-        duration: 0.3,
-        stagger: 0.05,
-        ease: "power2.out",
-      })
-    })
-
-    project.addEventListener("mouseleave", () => {
-      gsap.to(projectImage.querySelector("img"), {
-        scale: 1,
-        duration: 0.6,
-        ease: "power2.out",
-      })
-
-      gsap.to(techTags, {
-        y: 0,
-        duration: 0.3,
-        stagger: 0.05,
-        ease: "power2.out",
-      })
-    })
-  })
-
-  // Add smooth scrolling for better experience
-  gsap.to(window, {
-    scrollTo: 0,
-    duration: 0.1,
-  })
-
-  // Refresh ScrollTrigger after everything is set up
-  ScrollTrigger.refresh()
-}
-
-// Handle resize
-window.addEventListener("resize", () => {
-  ScrollTrigger.refresh()
-})
-
-// Add loading animation
-window.addEventListener("load", () => {
-  gsap.from("body", {
-    opacity: 0,
-    duration: 1,
-    ease: "power2.out",
-  })
-})
-    </script>
-  </body>
+</body>
 </html>

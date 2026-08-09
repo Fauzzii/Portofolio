@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".gulir");
   const totalCards = cards.length;
 
+  if (!cardSwap || !cards.length) return;
+
   const config = {
     cardDistance: 60,
     verticalDistance: 70,
@@ -29,30 +31,47 @@ document.addEventListener("DOMContentLoaded", () => {
     zIndex: total - i,
   });
 
-  const placeCard = (el, slot, skew) => {
-    gsap.set(el, {
-      x: slot.x,
-      y: slot.y,
-      z: slot.z,
-      xPercent: -50,
-      yPercent: -50,
-      skewY: skew,
-      transformOrigin: "center center",
-      zIndex: slot.zIndex,
-      force3D: true,
+  const initializeCards = () => {
+    cards.forEach((card, i) => {
+      const slot = makeSlot(i, config.cardDistance, config.verticalDistance, totalCards);
+      gsap.set(card, {
+        x: 0,
+        y: 600,
+        z: -300,
+        xPercent: -50,
+        yPercent: -50,
+        skewY: 0,
+        opacity: 0,
+        transformOrigin: "center center",
+        zIndex: slot.zIndex,
+        force3D: true,
+      });
     });
   };
 
-  cards.forEach((card, i) => {
-    placeCard(
-      card,
-      makeSlot(i, config.cardDistance, config.verticalDistance, totalCards),
-      config.skewAmount
-    );
-  });
+  initializeCards();
 
   let order = Array.from({ length: totalCards }, (_, i) => i);
   let interval;
+
+  gsap.to(cards, {
+    scrollTrigger: {
+      trigger: ".card-swap",
+      start: "top 80%",
+      toggleActions: "play none none none"
+    },
+    x: (i) => makeSlot(i, config.cardDistance, config.verticalDistance, totalCards).x,
+    y: (i) => makeSlot(i, config.cardDistance, config.verticalDistance, totalCards).y,
+    z: (i) => makeSlot(i, config.cardDistance, config.verticalDistance, totalCards).z,
+    skewY: config.skewAmount,
+    opacity: 1,
+    duration: 1.4,
+    stagger: 0.25,
+    ease: "power3.out",
+    onComplete: () => {
+      interval = setInterval(swap, config.delay);
+    }
+  });
 
   const swap = () => {
     if (order.length < 2) return;
@@ -69,8 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tl.add(
       "promote",
-      `-=${
-        config.animationConfig.durDrop * config.animationConfig.promoteOverlap
+      `-=${config.animationConfig.durDrop * config.animationConfig.promoteOverlap
       }`
     );
 
@@ -105,8 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     tl.add(
       "return",
-      `promote+=${
-        config.animationConfig.durMove * config.animationConfig.returnDelay
+      `promote+=${config.animationConfig.durMove * config.animationConfig.returnDelay
       }`
     );
     tl.set(elFront, { zIndex: backSlot.zIndex }, "return");
@@ -126,9 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  swap();
-  interval = setInterval(swap, config.delay);
-
   if (config.pauseOnHover) {
     cardSwap.addEventListener("mouseenter", () => {
       gsap.ticker.sleep();
@@ -137,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cardSwap.addEventListener("mouseleave", () => {
       gsap.ticker.wake();
+      if (interval) clearInterval(interval);
       interval = setInterval(swap, config.delay);
     });
   }
