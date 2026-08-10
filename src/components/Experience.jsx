@@ -7,29 +7,29 @@ gsap.registerPlugin(ScrollTrigger);
 const EXPERIENCES = [
   {
     id: 1,
-    year: "2024 — Present",
-    role: "Full-Stack Developer",
-    company: "Tech Solutions / Freelance",
-    desc: "Building scalable web apps, REST APIs, and micro-frontend modules — from zero to production.",
-    techs: ["React", "Node.js", "PostgreSQL"],
+    year: "2019 — 2022",
+    role: "Student (RPL / Software Engineering)",
+    company: "SMK TI Pembangunan",
+    desc: "Studied Software Engineering (RPL). Learned fundamentals of web design, database systems, object-oriented programming, and computer networks.",
+    techs: ["HTML/CSS", "PHP", "MySQL", "Java"],
     accent: "var(--accent-1)"
   },
   {
     id: 2,
-    year: "2023 — 2024",
-    role: "Front-End Engineer",
-    company: "Digital Studio",
-    desc: "Crafting pixel-perfect, interaction-rich UIs with React, GSAP, and modern CSS that delight users.",
-    techs: ["GSAP", "Tailwind", "Figma"],
+    year: "2022 — 2023",
+    role: "Information Technology Assistant Intern",
+    company: "Institut Teknologi Bandung (ITB)",
+    desc: "Completed an internship assisting in managing campus IT infrastructure, network support, system administration assistance, and device troubleshooting.",
+    techs: ["Networking", "IT Support", "Hardware", "Troubleshooting"],
     accent: "var(--accent-2)"
   },
   {
     id: 3,
-    year: "2022 — 2023",
-    role: "UI/UX Designer",
-    company: "Creative Agency",
-    desc: "Designing user flows and high-fidelity Figma prototypes — then building them into real products myself.",
-    techs: ["Figma", "UI/UX", "Prototyping"],
+    year: "2023 — Present",
+    role: "Informatics Engineering Student (Ongoing)",
+    company: "Universitas Komputer Indonesia (UNIKOM)",
+    desc: "Currently pursuing a Bachelor's degree in Informatics Engineering (Teknik Informatika). Ongoing education focusing on computer science theory, algorithms, and full-stack software development.",
+    techs: ["Algorithms", "Java", "C++", "Software Engineering"],
     accent: "var(--accent-3)"
   }
 ];

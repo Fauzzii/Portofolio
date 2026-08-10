@@ -235,7 +235,7 @@ export default function Hero({ isLoading }) {
       </div>
 
       <p className="hero-tagline">
-        Crafting responsive front-end interfaces and scalable back-end systems that balance clean modern aesthetics with high-performance code.
+        Full-Stack Developer specializing in web application building, UI/UX design, and machine learning solutions.
       </p>
 
       <div className="hero-cta-group">

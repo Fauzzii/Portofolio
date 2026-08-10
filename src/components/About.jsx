@@ -225,9 +225,9 @@ export default function About() {
   }, [profileImg]);
 
   const aboutText =
-    'From crafting responsive front-end interfaces to developing robust back-end systems, ' +
-    'I enjoy bringing complete digital solutions to life. I work with modern tools and ' +
-    'frameworks to create applications that are fast, secure, and user-focused.';
+    'As a Full-Stack Developer, I build complete web applications, design clean user experiences, ' +
+    'and develop machine learning systems. I combine visual aesthetics with intelligent code ' +
+    'to create high-performance applications that are smart, secure, and user-focused.';
 
   return (
     <section className="about animate-section" id="about" ref={sectionRef}>
