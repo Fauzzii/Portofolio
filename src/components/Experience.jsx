@@ -39,6 +39,7 @@ export default function Experience() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Header reveals
       gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -59,65 +60,58 @@ export default function Experience() {
         { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5'
       );
 
-      gsap.fromTo('.exp-line',
+      // Active scroll progress line drawing
+      gsap.fromTo('.exp-line-progress',
         { scaleY: 0 },
         {
           scaleY: 1,
-          duration: 1.8,
-          ease: 'power2.inOut',
+          ease: 'none',
           scrollTrigger: {
             trigger: '.exp-timeline',
             start: 'top 70%',
-            toggleActions: 'play none none reverse'
+            end: 'bottom 75%',
+            scrub: true
           }
         }
       );
 
+      // Scroll scrubbing for each experience item (dots and cards)
       const items = containerRef.current.querySelectorAll('.exp-item');
       items.forEach((item, i) => {
-        const textLeft = item.querySelector('.exp-text-left');
-        const textRight = item.querySelector('.exp-text-right');
-        const card = item.querySelector('.exp-card-inner');
+        const isLeft = i % 2 === 0;
+        const textSide = item.querySelector(isLeft ? '.exp-text-left' : '.exp-text-right');
+        const card = item.querySelector('.exp-card');
         const dot = item.querySelector('.exp-dot');
 
-        const tl = gsap.timeline({
+        gsap.timeline({
           scrollTrigger: {
             trigger: item,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
+            start: 'top 85%',
+            end: 'top 55%',
+            scrub: 1
           }
-        });
-
-        tl.fromTo(dot,
-          { scale: 0, rotation: -180 },
-          { scale: 1, rotation: 0, duration: 0.6, ease: 'back.out(2.5)' }
+        })
+        .fromTo(dot, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, ease: 'back.out(2)' })
+        .fromTo(textSide,
+          { opacity: 0, x: isLeft ? -40 : 40 },
+          { opacity: 1, x: 0 },
+          0
         )
-          .to(item, { opacity: 1, duration: 0.01 }, 0)
-          .fromTo(textLeft || textRight,
-            { opacity: 0, x: textLeft ? -60 : 60 },
-            { opacity: 1, x: 0, duration: 0.85, ease: 'power3.out' }, '-=0.3'
-          )
-          .fromTo(card,
-            { opacity: 0, x: textLeft ? 60 : -60, y: 20, rotationY: textLeft ? 15 : -15 },
-            { opacity: 1, x: 0, y: 0, rotationY: 0, duration: 0.9, ease: 'back.out(1.5)' }, '-=0.75'
-          );
+        .fromTo(card,
+          { opacity: 0, x: isLeft ? 40 : -40, scale: 0.95, rotationY: isLeft ? 8 : -8 },
+          { opacity: 1, x: 0, scale: 1, rotationY: 0 },
+          0
+        );
 
-        gsap.to(dot, {
-          scale: 1.3,
-          duration: 0.9 + i * 0.2,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          delay: i * 0.4
-        });
-
-        if (card) {
+        // Card mouse move 3D tilt effect
+        const cardInner = item.querySelector('.exp-card-inner');
+        if (cardInner) {
           const onMouseMove = (e) => {
-            const rect = card.getBoundingClientRect();
+            const rect = cardInner.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
 
-            gsap.to(card, {
+            gsap.to(cardInner, {
               rotationY: x * 0.05,
               rotationX: -y * 0.05,
               transformPerspective: 800,
@@ -127,7 +121,7 @@ export default function Experience() {
           };
 
           const onMouseLeave = () => {
-            gsap.to(card, {
+            gsap.to(cardInner, {
               rotationY: 0,
               rotationX: 0,
               duration: 0.5,
@@ -135,11 +129,12 @@ export default function Experience() {
             });
           };
 
-          card.addEventListener('mousemove', onMouseMove);
-          card.addEventListener('mouseleave', onMouseLeave);
+          cardInner.addEventListener('mousemove', onMouseMove);
+          cardInner.addEventListener('mouseleave', onMouseLeave);
         }
       });
 
+      // Parallax deco assets
       const decos = containerRef.current.querySelectorAll('.plx-deco');
       decos.forEach(el => {
         const speed = parseFloat(el.dataset.speed || '0.2');
@@ -179,34 +174,36 @@ export default function Experience() {
         </div>
 
         <div className="exp-timeline relative flex flex-col gap-0">
-          <div className="exp-line absolute left-1/2 top-0 bottom-0 w-[1px] border-l-2 border-dashed border-black/15 -translate-x-1/2 origin-top"></div>
+          {/* Main background line track */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-black/5 -translate-x-1/2"></div>
+          {/* Active progress scroll-drawn line */}
+          <div className="exp-line-progress absolute left-1/2 top-0 bottom-0 w-[2px] bg-[#111] -translate-x-1/2 origin-top scale-y-0"></div>
 
           {EXPERIENCES.map((exp, index) => {
             const isLeft = index % 2 === 0;
             return (
               <div
                 key={exp.id}
-                className="exp-item grid grid-cols-[1fr_100px_1fr] items-center mb-24 opacity-0 last:mb-0"
+                className="exp-item grid grid-cols-[1fr_100px_1fr] items-center mb-24 last:mb-0"
               >
                 {isLeft ? (
-                  <div className="exp-text-left pr-14 text-right">
+                  <div className="exp-text-left pr-14 text-right opacity-0">
                     <span className="font-mono text-[0.65rem] tracking-wider uppercase text-black/40">{exp.year}</span>
                     <h3 className="text-[1.75rem] font-extrabold text-[#111] mt-2 tracking-tight">{exp.role}</h3>
                     <p className="text-black/45 text-[0.85rem] mt-1 font-mono">{exp.company}</p>
                   </div>
                 ) : (
-                  <div className="exp-card pr-14">
+                  <div className="exp-card pr-14 opacity-0">
                     <div
-                      style={{ boxShadow: '4px 4px 0 rgba(0,0,0,0.06)' }}
-                      className="exp-card-inner bg-white border-2 border-black/5 rounded-[16px] p-7 transition-all duration-300 hover:-translate-y-1"
+                      style={{ borderLeft: `4px solid ${exp.accent}` }}
+                      className="exp-card-inner bg-white/80 backdrop-blur-md border border-black/5 rounded-[16px] p-7 transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)]"
                     >
                       <p className="text-black/65 text-[0.95rem] leading-relaxed mb-4">{exp.desc}</p>
                       <div className="flex flex-wrap gap-1.5">
                         {exp.techs.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            style={{ backgroundColor: exp.accent }}
-                            className="font-mono text-[10px] px-2.5 py-1 rounded-full border border-black/5"
+                            className="font-mono text-[10px] px-2.5 py-1 rounded-full bg-black/5 text-black/60 border border-black/5"
                           >
                             {tech}
                           </span>
@@ -218,24 +215,23 @@ export default function Experience() {
 
                 <div className="flex justify-center z-10">
                   <div
-                    style={{ backgroundColor: exp.accent, boxShadow: '4px 4px 0 #111' }}
-                    className="exp-dot w-6 h-6 rounded-full border-3 border-[#111]"
+                    style={{ backgroundColor: exp.accent }}
+                    className="exp-dot w-5 h-5 rounded-full border-4 border-[#f9f4eb] shadow-[0_0_0_2px_rgba(0,0,0,0.12)] opacity-0"
                   ></div>
                 </div>
 
                 {isLeft ? (
-                  <div className="exp-card pl-14">
+                  <div className="exp-card pl-14 opacity-0">
                     <div
-                      style={{ boxShadow: '4px 4px 0 rgba(0,0,0,0.06)' }}
-                      className="exp-card-inner bg-white border-2 border-black/5 rounded-[16px] p-7 transition-all duration-300 hover:-translate-y-1"
+                      style={{ borderLeft: `4px solid ${exp.accent}` }}
+                      className="exp-card-inner bg-white/80 backdrop-blur-md border border-black/5 rounded-[16px] p-7 transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)]"
                     >
                       <p className="text-black/65 text-[0.95rem] leading-relaxed mb-4">{exp.desc}</p>
                       <div className="flex flex-wrap gap-1.5">
                         {exp.techs.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            style={{ backgroundColor: exp.accent }}
-                            className="font-mono text-[10px] px-2.5 py-1 rounded-full border border-black/5"
+                            className="font-mono text-[10px] px-2.5 py-1 rounded-full bg-black/5 text-black/60 border border-black/5"
                           >
                             {tech}
                           </span>
@@ -244,7 +240,7 @@ export default function Experience() {
                     </div>
                   </div>
                 ) : (
-                  <div className="exp-text-right pl-14 text-left">
+                  <div className="exp-text-right pl-14 text-left opacity-0">
                     <span className="font-mono text-[0.65rem] tracking-wider uppercase text-black/40">{exp.year}</span>
                     <h3 className="text-[1.75rem] font-extrabold text-[#111] mt-2 tracking-tight">{exp.role}</h3>
                     <p className="text-black/45 text-[0.85rem] mt-1 font-mono">{exp.company}</p>

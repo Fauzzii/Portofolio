@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
+import ScrambleText from './ScrambleText';
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
@@ -73,7 +74,7 @@ export default function Navbar() {
     <header ref={navbarWrapperRef} className="navbar-wrapper">
       <nav className={`navbar-glass ${isScrolled ? 'scrolled' : ''}`}>
         <a href="#" className="nav-brand">
-          <span>FAUZI EKA PUTRA</span> <span class="nav-brand-badge">DEV</span>
+          <ScrambleText text="FAUZI EKA PUTRA" /> <span className="nav-brand-badge">DEV</span>
         </a>
         
         <ul className="nav-menu">
@@ -83,13 +84,15 @@ export default function Navbar() {
                 href={item.href}
                 className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
               >
-                {item.label}
+                <ScrambleText text={item.label} duration={400} />
               </a>
             </li>
           ))}
         </ul>
         
-        <a href="#contact" className="nav-cta-btn">Let's Talk ✦</a>
+        <a href="#contact" className="nav-cta-btn">
+          <ScrambleText text="Let's Talk ✦" duration={500} />
+        </a>
       </nav>
     </header>
   );

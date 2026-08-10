@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import DotField from './DotField';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,11 +33,13 @@ function Counter({ target }) {
   return <span ref={ref} className="count font-mono" style={{ fontSize: '1rem' }}>0</span>;
 }
 
-export default function Hero() {
+export default function Hero({ isLoading }) {
   const containerRef = useRef(null);
   const nameRef = useRef(null);
 
   useEffect(() => {
+    if (isLoading) return; // Wait for preloader to complete
+
     let heroSection;
     let onHeroMouseMove;
     let ctaListeners = [];
@@ -44,7 +47,7 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       const chars = nameRef.current.querySelectorAll('.char');
       gsap.set(nameRef.current, { visibility: 'visible' });
-      
+
       gsap.fromTo(chars,
         { yPercent: 100 },
         {
@@ -68,7 +71,7 @@ export default function Hero() {
       );
 
       const smoothStep = (p) => p * p * (3 - 2 * p);
-      
+
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top top",
@@ -115,9 +118,9 @@ export default function Hero() {
         const onBtnEnter = () => gsap.to(btn, { scale: 1.05, duration: 0.3, ease: 'back.out(1.5)' });
         const onBtnLeave = () => gsap.to(btn, { scale: 1, x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,.4)' });
         const onBtnMove = (e) => {
-          const r  = btn.getBoundingClientRect();
-          const dx = (e.clientX - r.left - r.width  / 2) * 0.35;
-          const dy = (e.clientY - r.top  - r.height / 2) * 0.35;
+          const r = btn.getBoundingClientRect();
+          const dx = (e.clientX - r.left - r.width / 2) * 0.35;
+          const dy = (e.clientY - r.top - r.height / 2) * 0.35;
           gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power1.out' });
         };
 
@@ -150,7 +153,7 @@ export default function Hero() {
           });
         });
       };
-      
+
       heroSection = containerRef.current;
       heroSection.addEventListener('mousemove', onHeroMouseMove);
 
@@ -167,7 +170,7 @@ export default function Hero() {
         btn.removeEventListener('mousemove', move);
       });
     };
-  }, []);
+  }, [isLoading]);
 
   const nameWords = "Fauzi Eka Putra".split(" ");
 
@@ -199,6 +202,24 @@ export default function Hero() {
             ))}
           </span>
         ))}
+      </div>
+
+      {/* Animated DotField Background */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
+        <DotField
+          dotRadius={1.8}
+          dotSpacing={14}
+          cursorRadius={450}
+          cursorForce={0.12}
+          bulgeOnly={true}
+          bulgeStrength={85}
+          glowRadius={220}
+          sparkle={true}
+          waveAmplitude={2}
+          gradientFrom="rgba(124, 58, 237, 0.45)"
+          gradientTo="rgba(236, 72, 153, 0.35)"
+          glowColor="rgba(229, 217, 246, 0.25)"
+        />
       </div>
 
       <p className="hero-tagline">

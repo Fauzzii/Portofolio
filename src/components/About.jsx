@@ -1,19 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import profileImg from '../assets/profile.png';
+import profileImg from '../assets/profile.jpeg';
+import Lanyard from './Lanyard';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const sectionRef = useRef(null);
-  const canvasRef  = useRef(null);
-  const cardRef    = useRef(null);
-  const wrapperRef = useRef(null);
-  const isDragging = useRef(false);
-  const mouseRef   = useRef({ x: 0, y: 0 });
-  const anchorsRef = useRef({ left: { x: 0, y: 10 }, right: { x: 0, y: 10 } });
-  const cardRotRef = useRef(0);
+  const [cardFrontUrl, setCardFrontUrl] = useState(null);
+  const [cardBackUrl, setCardBackUrl] = useState(null);
+  const [lanyardBgUrl, setLanyardBgUrl] = useState(null);
 
   useEffect(() => {
     // ── Scroll word-reveal ────────────────────────────────────────────────────
@@ -31,236 +28,228 @@ export default function About() {
       );
     }, sectionRef);
 
-    // ── Physics constants ─────────────────────────────────────────────────────
-    const N       = 12;     // rope segments
-    const SEG     = 24;     // px per segment
-    const STRAP   = 140;    // V-neck strap max length (px)
-    const SPREAD  = 85;     // shoulder anchor half-width (px)
-    const G       = 0.28;   // gravity per sub-step
-    const DAMP    = 0.988;  // natural damping: card gradually settles to rest when released
-    const BNC     = 0.58;   // boundary restitution (how bouncy walls are)
-    const SUB     = 3;      // sub-steps per frame for accuracy
-    const I_REST  = 18;     // constraint solver iterations at rest
-    const I_DRAG  = 7;      // constraint iterations while dragging
-
-    // ── Canvas setup ──────────────────────────────────────────────────────────
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const c = canvas.getContext('2d');
-
-    const fitCanvas = () => {
-      const r = sectionRef.current.getBoundingClientRect();
-      canvas.width  = r.width;
-      canvas.height = r.height;
-    };
-    fitCanvas();
-
-    const AY = 10;
-    const getAx = () => (canvas.width > 768 ? canvas.width * 0.72 : canvas.width * 0.80);
-    const setAnchors = () => {
-      const ax = getAx();
-      anchorsRef.current = {
-        left:  { x: ax - SPREAD, y: AY },
-        right: { x: ax + SPREAD, y: AY },
-      };
-    };
-    setAnchors();
-
-    const handleResize = () => { fitCanvas(); setAnchors(); };
-    window.addEventListener('resize', handleResize);
-
-    // ── Rope initialisation ───────────────────────────────────────────────────
-    // Rope hangs straight down at rest
-    const pts = [];
-    const ax = getAx();
-    for (let i = 0; i < N; i++) {
-      const d  = STRAP + i * SEG;
-      const px = ax;
-      const py = AY + d;
-      pts.push({ x: px, y: py, oldX: px, oldY: py });
-    }
-
-    // ── Cubic cardinal spline ─────────────────────────────────────────────────
-    const spline = (pts) => {
-      if (pts.length < 2) return;
-      c.moveTo(pts[0].x, pts[0].y);
-      for (let i = 0; i < pts.length - 1; i++) {
-        const p0 = pts[Math.max(i - 1, 0)];
-        const p1 = pts[i];
-        const p2 = pts[i + 1];
-        const p3 = pts[Math.min(i + 2, pts.length - 1)];
-        const T  = 0.5;
-        c.bezierCurveTo(
-          p1.x + (p2.x - p0.x) * T / 3,
-          p1.y + (p2.y - p0.y) * T / 3,
-          p2.x - (p3.x - p1.x) * T / 3,
-          p2.y - (p3.y - p1.y) * T / 3,
-          p2.x, p2.y,
-        );
-      }
-    };
-
-    const drawRope = (pArr, width, color) => {
-      c.beginPath(); spline(pArr);
-      c.lineWidth = width; c.strokeStyle = color;
-      c.lineCap = 'round'; c.lineJoin = 'round'; c.stroke();
-    };
-
-    // ── Physics step (runs SUB times per frame) ───────────────────────────────
-    const CARD_H = 310, CARD_W = 190;
-
-    const step = () => {
-      // Continuous slow, subtle sway (oscillates left & right gently without stopping)
-      const time = Date.now() * 0.0012;
-      const swayForce = Math.sin(time) * 0.025;
-
-      for (let i = 0; i < N; i++) {
-        const p = pts[i];
-        const vx = (p.x - p.oldX) * DAMP;
-        const vy = (p.y - p.oldY) * DAMP;
-        p.oldX = p.x; p.oldY = p.y;
-        p.x += vx;
-        p.y += vy + G;
-
-        if (!isDragging.current && i > 0) {
-          p.x += swayForce * (i / N);
-        }
-      }
-
-      // Mouse drag — pull card tip toward cursor with heavy smooth inertia
-      if (isDragging.current) {
-        const tip = pts[N - 1];
-        tip.x += (mouseRef.current.x - tip.x) * 0.06;
-        tip.y += (mouseRef.current.y - tip.y) * 0.06;
-      }
-
-      // Constraint solver
-      const iters = isDragging.current ? I_DRAG : I_REST;
-      const { left, right } = anchorsRef.current;
-      for (let k = 0; k < iters; k++) {
-        // Confine clip point within strap radius of both shoulder anchors
-        const p0 = pts[0];
-        for (const anch of [left, right]) {
-          const dx = p0.x - anch.x;
-          const dy = p0.y - anch.y;
-          const d  = Math.hypot(dx, dy);
-          if (d > STRAP) {
-            const s = STRAP / d;
-            p0.x = anch.x + dx * s;
-            p0.y = anch.y + dy * s;
-          }
-        }
-
-        // Maintain segment lengths along rope
-        for (let i = 0; i < N - 1; i++) {
-          const a = pts[i], b = pts[i + 1];
-          const dx = b.x - a.x;
-          const dy = b.y - a.y;
-          const d  = Math.hypot(dx, dy);
-          if (d < 0.001) continue;
-          const f = (SEG - d) / d * 0.5;
-          a.x -= dx * f; a.y -= dy * f;
-          // Last segment: keep fixed while dragging so card sticks to cursor
-          if (i < N - 2 || !isDragging.current) {
-            b.x += dx * f; b.y += dy * f;
-          }
-        }
-      }
-
-      // Boundary collisions — properly reflect velocity, don't kill it
-      const tip = pts[N - 1];
-      if (tip.y > canvas.height - CARD_H - 10) {
-        const vy = tip.y - tip.oldY;
-        tip.y    = canvas.height - CARD_H - 10;
-        tip.oldY = tip.y + Math.abs(vy) * BNC; // reflect upward
-      }
-      if (tip.y < AY + 22) {
-        const vy = tip.y - tip.oldY;
-        tip.y    = AY + 22;
-        tip.oldY = tip.y - Math.abs(vy) * BNC; // reflect downward
-      }
-      if (tip.x < CARD_W / 2 + 10) {
-        const vx = tip.x - tip.oldX;
-        tip.x    = CARD_W / 2 + 10;
-        tip.oldX = tip.x + Math.abs(vx) * BNC; // reflect right
-      }
-      if (tip.x > canvas.width - CARD_W / 2 - 10) {
-        const vx = tip.x - tip.oldX;
-        tip.x    = canvas.width - CARD_W / 2 - 10;
-        tip.oldX = tip.x - Math.abs(vx) * BNC; // reflect left
-      }
-
-
-    };
-
-    // ── Render loop ───────────────────────────────────────────────────────────
-    let raf;
-    const render = () => {
-      for (let s = 0; s < SUB; s++) step();
-
-      c.clearRect(0, 0, canvas.width, canvas.height);
-
-      const { left, right } = anchorsRef.current;
-      const clip = pts[0];
-      const tip  = pts[N - 1];
-
-      // Shoulder anchor dots
-      c.fillStyle = '#252528';
-      c.beginPath();
-      c.arc(left.x,  left.y,  6, 0, Math.PI * 2);
-      c.arc(right.x, right.y, 6, 0, Math.PI * 2);
-      c.fill();
-
-      // V-neck straps: left shoulder → clip, right shoulder → clip
-      drawRope([left,  clip], 13, '#18181b'); drawRope([left,  clip], 2.5, '#22d3ee');
-      drawRope([right, clip], 13, '#18181b'); drawRope([right, clip], 2.5, '#22d3ee');
-
-      // Drop rope: clip → card hook
-      const drop = [clip, ...pts.slice(1)];
-      drawRope(drop, 13, '#18181b');
-      drawRope(drop, 2.5, '#22d3ee');
-
-      // Clip bead at junction point
-      c.fillStyle = '#3a3a3e';
-      c.beginPath(); c.arc(clip.x, clip.y, 7, 0, Math.PI * 2); c.fill();
-      c.fillStyle = '#5a5a60';
-      c.beginPath(); c.arc(clip.x - 1.5, clip.y - 2, 2.5, 0, Math.PI * 2); c.fill();
-
-      // Metal hook tab at top of card
-      c.fillStyle = '#4a4a50';
-      c.beginPath();
-      c.roundRect(tip.x - 4.5, tip.y - 14, 9, 14, 2);
-      c.fill();
-
-      // Lerp card rotation for buttery-smooth angle updates
-      const prev = pts[N - 2];
-      const targetDeg = Math.atan2(tip.y - prev.y, tip.x - prev.x) * (180 / Math.PI) - 90;
-      cardRotRef.current += (targetDeg - cardRotRef.current) * 0.10;
-
-      if (cardRef.current) {
-        cardRef.current.style.transform = [
-          `translate3d(${tip.x}px,${tip.y}px,0)`,
-          `translate(-50%,0)`,
-          `rotateZ(${cardRotRef.current}deg)`,
-        ].join(' ');
-      }
-
-      raf = requestAnimationFrame(render);
-    };
-
-    render();
-
     return () => {
       ctx.revert();
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  const updateMouse = (e) => {
-    const r = canvasRef.current?.getBoundingClientRect();
-    if (r) mouseRef.current = { x: e.clientX - r.left, y: e.clientY - r.top };
-  };
+  useEffect(() => {
+    // Create a beautiful custom strap texture matching the website theme (lavender, pink, yellow accents)
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      const grad = ctx.createLinearGradient(0, 0, 512, 0);
+      grad.addColorStop(0, '#e5d9f6'); // lavender (var(--accent-1))
+      grad.addColorStop(0.5, '#ffd2f3'); // pink (var(--accent-2))
+      grad.addColorStop(1, '#fcdca6'); // yellow (var(--accent-3))
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 512, 64);
+
+      // Dark tech diagonal stripes
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.08)';
+      ctx.lineWidth = 4;
+      for (let x = -64; x < 512; x += 32) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x + 64, 64);
+        ctx.stroke();
+      }
+
+      // Border accents
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, 512, 5);
+      ctx.fillRect(0, 59, 512, 5);
+
+      setLanyardBgUrl(canvas.toDataURL());
+    }
+  }, []);
+
+  useEffect(() => {
+    // Generate back texture immediately (600x1100, aspect ratio 1:1.83)
+    const backCanvas = document.createElement('canvas');
+    backCanvas.width = 600;
+    backCanvas.height = 1100;
+    const backCtx = backCanvas.getContext('2d');
+    if (backCtx) {
+      const grad = backCtx.createLinearGradient(0, 0, 600, 1100);
+      grad.addColorStop(0, '#0a0a0c');
+      grad.addColorStop(1, '#15151b');
+      backCtx.fillStyle = grad;
+      backCtx.fillRect(0, 0, 600, 1100);
+
+      // Grid overlay
+      backCtx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+      backCtx.lineWidth = 1;
+      for (let x = 0; x < 600; x += 40) {
+        backCtx.beginPath(); backCtx.moveTo(x, 0); backCtx.lineTo(x, 1100); backCtx.stroke();
+      }
+      for (let y = 0; y < 1100; y += 40) {
+        backCtx.beginPath(); backCtx.moveTo(0, y); backCtx.lineTo(600, y); backCtx.stroke();
+      }
+
+      // Border highlight
+      backCtx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      backCtx.lineWidth = 8;
+      backCtx.strokeRect(4, 4, 592, 1092);
+
+      // Abstract logo/badge center shifted in the longer card
+      backCtx.strokeStyle = '#22d3ee';
+      backCtx.lineWidth = 6;
+      backCtx.beginPath();
+      backCtx.moveTo(300, 380);
+      backCtx.lineTo(420, 450);
+      backCtx.lineTo(420, 570);
+      backCtx.lineTo(300, 640);
+      backCtx.lineTo(180, 570);
+      backCtx.lineTo(180, 450);
+      backCtx.closePath();
+      backCtx.stroke();
+
+      backCtx.fillStyle = 'rgba(34, 211, 238, 0.06)';
+      backCtx.fill();
+
+      // Portfolio title
+      backCtx.fillStyle = '#ffffff';
+      backCtx.font = 'bold 36px sans-serif';
+      backCtx.textAlign = 'center';
+      backCtx.textBaseline = 'middle';
+      backCtx.fillText('PORTFOLIO', 300, 490);
+
+      backCtx.fillStyle = '#22d3ee';
+      backCtx.font = 'bold 20px monospace';
+      backCtx.fillText('FAUZI EKA PUTRA', 300, 535);
+
+      setCardBackUrl(backCanvas.toDataURL());
+    }
+
+    // Load profile photo to generate front texture
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = profileImg;
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 600;
+      canvas.height = 1100;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      // Background gradient
+      const grad = ctx.createLinearGradient(0, 0, 600, 1100);
+      grad.addColorStop(0, '#0c0c0e');
+      grad.addColorStop(1, '#050507');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 600, 1100);
+
+      // Grid overlay
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < 600; x += 40) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 1100); ctx.stroke();
+      }
+      for (let y = 0; y < 1100; y += 40) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(600, y); ctx.stroke();
+      }
+
+      // Border highlight
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 8;
+      ctx.strokeRect(4, 4, 592, 1092);
+
+      // Header text
+      ctx.fillStyle = '#22d3ee'; // cyan-400
+      ctx.font = 'bold 20px monospace';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText('DEV PASS // 2026', 40, 75);
+
+      // Green dot
+      ctx.fillStyle = '#10b981'; // emerald-500
+      ctx.beginPath();
+      ctx.arc(540, 68, 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Divider line
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(40, 105); ctx.lineTo(560, 105); ctx.stroke();
+
+      // Draw profile picture fitted in container (ph = 540 for slightly shorter card)
+      const px = 60, py = 145, pw = 480, ph = 540;
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(px, py, pw, ph);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(px, py, pw, ph);
+
+      // Fit image inside container preserving aspect ratio, compensating for 3D card stretch
+      // New 3D stretch factor is (2.65 / 2.25) = 1.1778
+      const stretchFactor = 2.65 / 2.25;
+      const targetAspect = (img.width / img.height) * stretchFactor;
+      let dw = pw, dh = ph;
+      const containerAspect = pw / ph;
+      if (targetAspect > containerAspect) {
+        dw = pw;
+        dh = pw / targetAspect;
+      } else {
+        dh = ph;
+        dw = ph * targetAspect;
+      }
+      const dx = px + (pw - dw) / 2;
+      const dy = py + (ph - dh) / 2;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(px, py, pw, ph);
+      ctx.clip();
+      ctx.drawImage(img, dx, dy, dw, dh);
+      ctx.restore();
+
+      // Label: MEMBER NAME
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      ctx.font = 'bold 16px monospace';
+      ctx.fillText('MEMBER NAME', 40, 775);
+
+      // Name: FAUZI EKA PUTRA
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 36px sans-serif';
+      ctx.fillText('FAUZI EKA PUTRA', 40, 825);
+
+      // Divider line
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(40, 875); ctx.lineTo(560, 875); ctx.stroke();
+
+      // Barcode on bottom left
+      ctx.fillStyle = '#ffffff';
+      const barcodeX = 40, barcodeY = 915, barcodeH = 70;
+      const barcodeWeights = [3, 1, 5, 2, 4, 1, 3, 2, 5, 1, 3, 3, 2, 4];
+      let currX = barcodeX;
+      barcodeWeights.forEach((w) => {
+        ctx.fillRect(currX, barcodeY, w * 3.5, barcodeH);
+        currX += w * 3.5 + 5;
+      });
+
+      // Badge on bottom right: ACTIVE
+      ctx.fillStyle = 'rgba(34, 211, 238, 0.06)';
+      ctx.strokeStyle = 'rgba(34, 211, 238, 0.15)';
+      ctx.lineWidth = 2;
+      const badgeX = 410, badgeY = 930, badgeW = 150, badgeH = 45;
+      ctx.beginPath();
+      ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 22);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#22d3ee';
+      ctx.font = 'bold 18px monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('ACTIVE', badgeX + badgeW / 2, badgeY + badgeH / 2);
+
+      setCardFrontUrl(canvas.toDataURL());
+    };
+  }, [profileImg]);
 
   const aboutText =
     'From crafting responsive front-end interfaces to developing robust back-end systems, ' +
@@ -271,53 +260,19 @@ export default function About() {
     <section className="about" id="about" ref={sectionRef}>
       <div className="about-bg-grid" />
 
-      {/* Full-section physics overlay */}
-      <div
-        ref={wrapperRef}
-        onMouseDown={(e) => { isDragging.current = true; updateMouse(e); }}
-        onMouseMove={updateMouse}
-        onMouseUp={() => { isDragging.current = false; }}
-        onMouseLeave={() => { isDragging.current = false; }}
-        className="absolute inset-0 z-20 cursor-grab active:cursor-grabbing select-none"
-      >
-        <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
-
-        {/* Developer ID Card */}
-        <div
-          ref={cardRef}
-          className="lanyard-card absolute top-0 left-0 w-[190px] aspect-[5/8] rounded-[14px] border border-white/10 overflow-hidden shadow-[0_28px_65px_rgba(0,0,0,0.72)] bg-[#0c0c0e]/95 p-3.5 flex flex-col justify-between pointer-events-none origin-[50%_0%] z-30"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 pointer-events-none" />
-
-          <div className="flex justify-between items-center border-b border-white/5 pb-2">
-            <span className="font-mono text-[8px] tracking-wider text-cyan-400 font-bold">DEV PASS // 2026</span>
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          </div>
-
-          <div className="w-full aspect-square rounded-[8px] overflow-hidden border border-white/10 bg-black/40 mt-2.5">
-            <img
-              src={profileImg}
-              alt="Fauzi Eka Putra"
-              className="w-full h-full object-cover select-none pointer-events-none"
-            />
-          </div>
-
-          <div className="text-left mt-3">
-            <div className="font-mono text-[8px] uppercase tracking-widest text-white/40 font-semibold">MEMBER NAME</div>
-            <div className="font-sans font-extrabold text-[12px] text-white mt-0.5 tracking-tight">FAUZI EKA PUTRA</div>
-          </div>
-
-          <div className="flex justify-between items-end border-t border-white/5 pt-2.5 mt-2.5">
-            <div className="h-4 w-12 bg-white/90 flex items-center justify-between px-0.5 rounded-[1px] opacity-80">
-              {[2, 1, 3, 1, 2].map((w, i) => (
-                <div key={i} className="h-full bg-black" style={{ width: w * 2 }} />
-              ))}
-            </div>
-            <div className="font-mono text-[7px] bg-cyan-400/10 text-cyan-300 border border-cyan-400/20 px-2 py-0.5 rounded-full font-bold">
-              ACTIVE
-            </div>
-          </div>
-        </div>
+      {/* 3D Lanyard physics container */}
+      <div className="absolute inset-0 w-full h-full z-20 select-none">
+        {cardFrontUrl && cardBackUrl && lanyardBgUrl && (
+          <Lanyard
+            position={[0, 0, 20]}
+            gravity={[0, -40, 0]}
+            frontImage={cardFrontUrl}
+            backImage={cardBackUrl}
+            lanyardImage={lanyardBgUrl}
+            imageFit="cover"
+            lanyardWidth={1.4}
+          />
+        )}
       </div>
 
       {/* Text content */}
