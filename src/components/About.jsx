@@ -77,7 +77,7 @@ export default function About() {
   }, []);
 
   useEffect(() => {
-    // Generate back texture immediately (600x1100, aspect ratio 1:1.83)
+    // Generate back texture immediately (600x1100, aspect ratio 1:1.83) - Clean blank face
     const backCanvas = document.createElement('canvas');
     backCanvas.width = 600;
     backCanvas.height = 1100;
@@ -89,47 +89,10 @@ export default function About() {
       backCtx.fillStyle = grad;
       backCtx.fillRect(0, 0, 600, 1100);
 
-      // Grid overlay
-      backCtx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
-      backCtx.lineWidth = 1;
-      for (let x = 0; x < 600; x += 40) {
-        backCtx.beginPath(); backCtx.moveTo(x, 0); backCtx.lineTo(x, 1100); backCtx.stroke();
-      }
-      for (let y = 0; y < 1100; y += 40) {
-        backCtx.beginPath(); backCtx.moveTo(0, y); backCtx.lineTo(600, y); backCtx.stroke();
-      }
-
       // Border highlight
       backCtx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
       backCtx.lineWidth = 8;
       backCtx.strokeRect(4, 4, 592, 1092);
-
-      // Abstract logo/badge center shifted in the longer card
-      backCtx.strokeStyle = '#22d3ee';
-      backCtx.lineWidth = 6;
-      backCtx.beginPath();
-      backCtx.moveTo(300, 380);
-      backCtx.lineTo(420, 450);
-      backCtx.lineTo(420, 570);
-      backCtx.lineTo(300, 640);
-      backCtx.lineTo(180, 570);
-      backCtx.lineTo(180, 450);
-      backCtx.closePath();
-      backCtx.stroke();
-
-      backCtx.fillStyle = 'rgba(34, 211, 238, 0.06)';
-      backCtx.fill();
-
-      // Portfolio title
-      backCtx.fillStyle = '#ffffff';
-      backCtx.font = 'bold 36px sans-serif';
-      backCtx.textAlign = 'center';
-      backCtx.textBaseline = 'middle';
-      backCtx.fillText('PORTFOLIO', 300, 490);
-
-      backCtx.fillStyle = '#22d3ee';
-      backCtx.font = 'bold 20px monospace';
-      backCtx.fillText('FAUZI EKA PUTRA', 300, 535);
 
       setCardBackUrl(backCanvas.toDataURL());
     }
