@@ -174,6 +174,18 @@ export default function Hero({ isLoading }) {
 
   const nameWords = "Fauzi Eka Putra".split(" ");
 
+  const handleCtaClick = (e, href) => {
+    e.preventDefault();
+    if (window.lenis) {
+      window.lenis.scrollTo(href);
+    } else {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <section className="hero" id="hero" ref={containerRef}>
       <div className="hero-glow-1"></div>
@@ -227,8 +239,8 @@ export default function Hero({ isLoading }) {
       </p>
 
       <div className="hero-cta-group">
-        <a href="#projects" className="btn-primary">Explore Work ✦</a>
-        <a href="#contact" className="btn-secondary">Get In Touch</a>
+        <a href="#projects" onClick={(e) => handleCtaClick(e, '#projects')} className="btn-primary">Explore Work ✦</a>
+        <a href="#contact" onClick={(e) => handleCtaClick(e, '#contact')} className="btn-secondary">Get In Touch</a>
       </div>
 
       <div className="shape">

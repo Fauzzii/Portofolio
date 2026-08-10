@@ -65,7 +65,12 @@ export default function Navbar() {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     if (window.lenis) {
-      window.lenis.scrollTo(href);
+      if (href === '#services') {
+        // Scroll 850px into the pinned section so header and cards are active and visible
+        window.lenis.scrollTo(href, { offset: 850 });
+      } else {
+        window.lenis.scrollTo(href);
+      }
     } else {
       const el = document.querySelector(href);
       if (el) {

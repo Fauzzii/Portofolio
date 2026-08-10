@@ -214,11 +214,11 @@ export default function Projects() {
           </div>
         </div>
 
-        <div id="proj-track" ref={trackRef} className="flex gap-8 px-32 will-change-transform">
+        <div id="proj-track" ref={trackRef} className="flex gap-5 md:gap-8 px-6 sm:px-12 md:px-32 will-change-transform">
           {PROJECTS.map((proj) => (
             <div
               key={proj.id}
-              className="proj-card flex-shrink-0 w-[520px] bg-[#f9f4eb] rounded-[24px] border-2 border-black/10 overflow-hidden relative shadow-2xl"
+              className="proj-card flex-shrink-0 w-[280px] xs:w-[320px] sm:w-[420px] md:w-[520px] bg-[#f9f4eb] rounded-[24px] border-2 border-black/10 overflow-hidden relative shadow-2xl"
             >
               <div className="relative aspect-video overflow-hidden">
                 <img
@@ -226,19 +226,19 @@ export default function Projects() {
                   alt={proj.title}
                   className="proj-img w-full h-full object-cover transition-transform duration-700 ease-out"
                 />
-                <div className="absolute top-4 left-4 font-mono text-[10px] font-bold tracking-wider uppercase bg-[#111] text-accent3 px-3 py-1.5 rounded-full">
+                <div className="absolute top-4 left-4 font-mono text-[9px] sm:text-[10px] font-bold tracking-wider uppercase bg-[#111] text-accent3 px-2.5 py-1.5 sm:px-3 rounded-full">
                   {proj.category}
                 </div>
               </div>
-              <div className="p-7">
-                <h3 className="text-[1.6rem] font-extrabold tracking-tight text-[#111] mb-2">{proj.title}</h3>
-                <p className="text-[0.92rem] text-black/75 font-medium leading-relaxed mb-5">{proj.desc}</p>
+              <div className="p-5 sm:p-7">
+                <h3 className="text-[1.2rem] sm:text-[1.4rem] md:text-[1.6rem] font-extrabold tracking-tight text-[#111] mb-2">{proj.title}</h3>
+                <p className="text-[0.78rem] sm:text-[0.85rem] md:text-[0.92rem] text-black/75 font-medium leading-relaxed mb-4 md:mb-5">{proj.desc}</p>
 
-                <div className="flex flex-wrap gap-1.5 mb-6">
+                <div className="flex flex-wrap gap-1.5 mb-5 md:mb-6">
                   {proj.techs.map((t, index) => (
                     <span
                       key={index}
-                      className="font-mono text-[10px] font-bold px-3 py-1 rounded-full bg-black/5 text-[#111] border border-black/10"
+                      className="font-mono text-[9px] sm:text-[10px] font-bold px-2.5 py-1 rounded-full bg-black/5 text-[#111] border border-black/10"
                     >
                       {t}
                     </span>
@@ -248,16 +248,16 @@ export default function Projects() {
                 <button
                   type="button"
                   onClick={() => openModal(proj)}
-                  className="proj-action-btn inline-flex items-center gap-2.5 font-mono text-[0.75rem] font-bold uppercase tracking-wider text-[#111] bg-black/5 border-2 border-[#111] px-5 py-2.5 rounded-full cursor-pointer transition-all duration-300"
+                  className="proj-action-btn inline-flex items-center gap-2.5 font-mono text-[0.7rem] sm:text-[0.75rem] font-bold uppercase tracking-wider text-[#111] bg-black/5 border-2 border-[#111] px-4.5 py-2 sm:px-5 sm:py-2.5 rounded-full cursor-pointer transition-all duration-300"
                 >
-                  View Details <i className="fas fa-arrow-right text-[0.7rem]"></i>
+                  View Details <i className="fas fa-arrow-right text-[0.65rem] sm:text-[0.7rem]"></i>
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        <div id="proj-scroll-hint" className="absolute bottom-10 right-12 flex items-center gap-2.5 font-mono text-[10px] tracking-wider uppercase text-white/35">
+        <div id="proj-scroll-hint" className="absolute bottom-10 right-6 md:right-12 flex items-center gap-2.5 font-mono text-[10px] tracking-wider uppercase text-white/35">
           <span id="proj-counter" className="text-white/60">{String(currentIndex).padStart(2, '0')}</span> / {String(PROJECTS.length).padStart(2, '0')}
           <div className="w-[60px] h-[1px] bg-white/15 relative overflow-hidden">
             <div
@@ -275,18 +275,18 @@ export default function Projects() {
         id="proj-modal"
         ref={modalRef}
         style={{ display: 'none', opacity: 0 }}
-        className="fixed inset-0 z-[999] bg-black/85 backdrop-blur-[12px] flex items-center justify-center p-8"
+        className="fixed inset-0 z-[999] bg-black/85 backdrop-blur-[12px] flex items-center justify-center p-4 sm:p-8"
       >
         {modalProject && (
           <div
             id="proj-modal-card"
             ref={modalCardRef}
-            className="bg-[#f9f4eb] text-[#111] max-w-[700px] w-full rounded-[24px] border-3 border-[#111] overflow-hidden shadow-2xl relative"
+            className="bg-[#f9f4eb] text-[#111] max-w-[90%] sm:max-w-[700px] w-full rounded-[24px] border-3 border-[#111] overflow-hidden shadow-2xl relative"
           >
             <button
               type="button"
               onClick={closeModal}
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-[#111] text-white border-none cursor-pointer text-lg flex items-center justify-center transition-all duration-200 hover:scale-105"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#111] text-white border-none cursor-pointer text-sm sm:text-lg flex items-center justify-center transition-all duration-200 hover:scale-105"
             >
               ✕
             </button>
@@ -296,19 +296,19 @@ export default function Projects() {
                 alt={modalProject.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-4 left-4 font-mono text-[10px] font-bold tracking-wider uppercase bg-[#111] text-accent1 px-3 py-1.5 rounded-full">
+              <div className="absolute top-4 left-4 font-mono text-[9px] sm:text-[10px] font-bold tracking-wider uppercase bg-[#111] text-accent1 px-2.5 py-1.5 rounded-full">
                 {modalProject.category}
               </div>
             </div>
-            <div className="p-8">
-              <h2 className="text-3xl font-extrabold tracking-tight text-[#111] mb-2">{modalProject.title}</h2>
-              <p className="text-[0.95rem] text-black/75 font-medium leading-relaxed mb-6">{modalProject.desc}</p>
+            <div className="p-6 sm:p-8">
+              <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight text-[#111] mb-2">{modalProject.title}</h2>
+              <p className="text-xs sm:text-[0.95rem] text-black/75 font-medium leading-relaxed mb-5 sm:mb-6">{modalProject.desc}</p>
 
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-1.5 mb-5 sm:mb-6">
                 {modalProject.techs.map((t, index) => (
                   <span
                     key={index}
-                    className="font-mono text-[10px] font-bold px-3.5 py-1.5 rounded-full bg-black/5 text-[#111] border border-black/10"
+                    className="font-mono text-[9px] sm:text-[10px] font-bold px-2.5 py-1.5 rounded-full bg-black/5 text-[#111] border border-black/10"
                   >
                     {t}
                   </span>
@@ -318,7 +318,7 @@ export default function Projects() {
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="font-mono text-[0.75rem] font-bold uppercase tracking-wider px-6 py-3 rounded-full bg-[#111] text-white border-none cursor-pointer transition-all duration-200 hover:opacity-90"
+                  className="font-mono text-[0.7rem] sm:text-[0.75rem] font-bold uppercase tracking-wider px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-[#111] text-white border-none cursor-pointer transition-all duration-200 hover:opacity-90"
                 >
                   Close Preview
                 </button>

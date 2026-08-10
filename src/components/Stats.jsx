@@ -83,7 +83,7 @@ function StatCard({ stat, index }) {
     <div
       ref={cardRef}
       style={{ backgroundColor: stat.bg }}
-      className="stat-card border border-black/8 rounded-[20px] p-10 relative overflow-hidden opacity-0 cursor-default"
+      className="stat-card border border-black/8 rounded-[20px] p-6 sm:p-10 relative overflow-hidden opacity-0 cursor-default"
     >
       <div
         ref={numRef}
@@ -150,7 +150,7 @@ export default function Stats() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 max-w-[900px] mx-auto stats-grid">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-[900px] mx-auto stats-grid">
           {STATS_DATA.map((stat, i) => (
             <StatCard key={stat.id} stat={stat} index={i} />
           ))}

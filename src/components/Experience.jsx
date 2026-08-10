@@ -156,7 +156,7 @@ export default function Experience() {
   }, []);
 
   return (
-    <section id="experience" ref={containerRef} className="relative bg-[#f9f4eb] text-[#111] pt-36 pb-0 px-8 overflow-hidden">
+    <section id="experience" ref={containerRef} className="relative bg-[#f9f4eb] text-[#111] pt-36 pb-0 px-8 overflow-hidden bg-dot-grid-light">
       
       <div className="plx-deco select-none pointer-events-none absolute text-[4rem] opacity-[0.18]" data-speed="0.15" style={{ top: '6%', left: '3%', animation: 'floatA 6s ease-in-out infinite' }}>✦</div>
       <div className="plx-deco pointer-events-none absolute w-[90px] h-[90px] rounded-full border-3 border-black/5" data-speed="0.25" style={{ top: '20%', right: '5%', backgroundColor: 'var(--accent-2)', animation: 'floatB 8s ease-in-out infinite' }}></div>
@@ -189,7 +189,7 @@ export default function Experience() {
                 {isLeft ? (
                   <div className="exp-text-left pr-14 text-right opacity-0">
                     <span className="font-mono text-[0.65rem] tracking-wider uppercase text-black/40">{exp.year}</span>
-                    <h3 className="text-[1.75rem] font-extrabold text-[#111] mt-2 tracking-tight">{exp.role}</h3>
+                    <h3 className="text-[1.2rem] sm:text-[1.5rem] md:text-[1.75rem] font-extrabold text-[#111] mt-2 tracking-tight">{exp.role}</h3>
                     <p className="text-black/45 text-[0.85rem] mt-1 font-mono">{exp.company}</p>
                   </div>
                 ) : (
@@ -198,7 +198,7 @@ export default function Experience() {
                       style={{ borderLeft: `4px solid ${exp.accent}` }}
                       className="exp-card-inner bg-white/80 backdrop-blur-md border border-black/5 rounded-[16px] p-7 transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)]"
                     >
-                      <p className="text-black/65 text-[0.95rem] leading-relaxed mb-4">{exp.desc}</p>
+                      <p className="text-black/65 text-[0.85rem] sm:text-[0.95rem] leading-relaxed mb-4">{exp.desc}</p>
                       <div className="flex flex-wrap gap-1.5">
                         {exp.techs.map((tech, tIdx) => (
                           <span
@@ -226,7 +226,7 @@ export default function Experience() {
                       style={{ borderLeft: `4px solid ${exp.accent}` }}
                       className="exp-card-inner bg-white/80 backdrop-blur-md border border-black/5 rounded-[16px] p-7 transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)]"
                     >
-                      <p className="text-black/65 text-[0.95rem] leading-relaxed mb-4">{exp.desc}</p>
+                      <p className="text-black/65 text-[0.85rem] sm:text-[0.95rem] leading-relaxed mb-4">{exp.desc}</p>
                       <div className="flex flex-wrap gap-1.5">
                         {exp.techs.map((tech, tIdx) => (
                           <span
@@ -242,7 +242,7 @@ export default function Experience() {
                 ) : (
                   <div className="exp-text-right pl-14 text-left opacity-0">
                     <span className="font-mono text-[0.65rem] tracking-wider uppercase text-black/40">{exp.year}</span>
-                    <h3 className="text-[1.75rem] font-extrabold text-[#111] mt-2 tracking-tight">{exp.role}</h3>
+                    <h3 className="text-[1.2rem] sm:text-[1.5rem] md:text-[1.75rem] font-extrabold text-[#111] mt-2 tracking-tight">{exp.role}</h3>
                     <p className="text-black/45 text-[0.85rem] mt-1 font-mono">{exp.company}</p>
                   </div>
                 )}
