@@ -62,6 +62,18 @@ export default function Navbar() {
     };
   }, []);
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    if (window.lenis) {
+      window.lenis.scrollTo(href);
+    } else {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   const navItems = [
     { label: 'About', href: '#about', id: 'about' },
     { label: 'Services', href: '#services', id: 'services' },
@@ -73,7 +85,7 @@ export default function Navbar() {
   return (
     <header ref={navbarWrapperRef} className="navbar-wrapper">
       <nav className={`navbar-glass ${isScrolled ? 'scrolled' : ''}`}>
-        <a href="#" className="nav-brand">
+        <a href="#" onClick={(e) => { e.preventDefault(); window.lenis?.scrollTo(0); }} className="nav-brand">
           <ScrambleText text="FAUZI EKA PUTRA" /> <span className="nav-brand-badge">DEV</span>
         </a>
         
@@ -82,6 +94,7 @@ export default function Navbar() {
             <li key={item.id}>
               <a
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
               >
                 <ScrambleText text={item.label} duration={400} />
@@ -90,7 +103,11 @@ export default function Navbar() {
           ))}
         </ul>
         
-        <a href="#contact" className="nav-cta-btn">
+        <a
+          href="#contact"
+          onClick={(e) => handleNavClick(e, '#contact')}
+          className="nav-cta-btn"
+        >
           <ScrambleText text="Let's Talk ✦" duration={500} />
         </a>
       </nav>

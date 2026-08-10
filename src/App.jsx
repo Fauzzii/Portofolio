@@ -38,6 +38,7 @@ export default function App() {
       smoothTouch: false,
       wheelMultiplier: 0.5,
     });
+    window.lenis = lenis;
 
     lenis.on('scroll', ScrollTrigger.update);
 
